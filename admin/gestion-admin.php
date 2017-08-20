@@ -6,8 +6,28 @@ require_once 'paginas/header.php';
 require_once 'conexion.php';
 
 //Ejecutamos la sentencia SQL
-$result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER BY id DESC");
+$result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0");
+$num_registros = mysqli_num_rows($result);
+
+//Limito las entradas que muestro por pagina
+$tamano_pagina = 11;
+
+//Examino en que pagina estoy y el inicio del registro a mostrar
+$pagina = $_GET["pag"];
+if (!$pagina) {
+	$inicio = 0;
+	$pagina = 1;
+} else {
+	$inicio = ($pagina - 1) * $tamano_pagina;
+}
+
+//Calculo el total de paginas
+$total_paginas = ceil($num_registros / $tamano_pagina);
+
+//Ejecutamos la query de acuerdo a la pagina que estoy
+$result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER BY id DESC LIMIT " . $inicio . "," . $tamano_pagina);
 ?>
+
 <div class="row">
 	<div class="col-md-4">
 		<input class="form-control" id="buscar" type="text" name="buscar" placeholder="Buscar">
@@ -18,12 +38,11 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER 
 </div>
 <table class="tg" style="table-layout: fixed;">
 <colgroup>
-<col style="width: 30px">
-<col>
-<col style="width: 70px">
-<col style="width: 70px">
-<col style="width: 70px">
-<col style="width: 150px">
+<col style="width: 36px">
+<col style="width: 225px">
+<col style="width: 84px">
+<col style="width: 84px">
+<col style="width: 83px">
 <col style="width: 70px">
 <col style="width: 180px">
 <col style="width: 40px">
@@ -35,7 +54,6 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER 
     <th>Cédula</th>
     <th>Celular</th>
     <th>Teléfono</th>
-    <th>Domicilio</th>
     <th>Ciudad</th>
     <th>Email</th>
     <th class="procesada">Pro</th>
@@ -45,12 +63,11 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER 
 <div class="tabla">
 <table class="tg" style="table-layout: fixed;">
 <colgroup>
-<col style="width: 30px">
-<col>
-<col style="width: 70px">
-<col style="width: 70px">
-<col style="width: 70px">
-<col style="width: 150px">
+<col style="width: 36px">
+<col style="width: 225px">
+<col style="width: 84px">
+<col style="width: 84px">
+<col style="width: 83px">
 <col style="width: 70px">
 <col style="width: 180px">
 <col style="width: 40px">
@@ -67,19 +84,40 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER 
 	echo '<td>' . $row["cedula"] . '</td>';
 	echo '<td>' . $row["celular"] . '</td>';
 	echo '<td>' . $row["telefono"] . '</td>';
-	echo '<td>' . $row["domicilio"] . '</td>';
 	echo '<td>' . $row["ciudad"] . '</td>';
 	echo '<td>' . $row["email"] . '</td>';
 	echo '<td>' . ($row["procesada"] == 1 ? 'Si' : 'No') . '</td>';
 	echo '<td><a href="ampliar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-search"></i></a><a href="procesar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-ok"></i></a><a href="eliminar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
 	}
-	mysqli_free_result ($result);
-	mysqli_close($conn);
 
   ?>
 </table>
 </div>
 
+<span>
+<?php 
+	//Mostrar paginacion
+	if ($total_paginas > 1) {
+		if ($pagina != 1) {
+			echo '<a href="gestion-admin.php?pag=' . ($pagina - 1) . '">< </a>';
+		}
+		//Muestro paginas
+		for ($i=1 ; $i <= $total_paginas ; $i++) {
+			if ($pagina == $i) {
+			echo $pagina . ' ';
+			} else {
+				echo '<a href="gestion-admin.php?pag=' . $i . '">' . $i . ' </a>';
+			}
+		}
+		if ($pagina != $total_paginas) {
+			echo '<a href="gestion-admin.php?pag=' . ($pagina + 1) . '">></a>';
+		}
+	}
+
+	mysqli_free_result ($result);
+	mysqli_close($conn);
+?>
+</span>
 
 <?php require_once 'paginas/footer.php';?>
 <style type="text/css">footer {display: none;}</style>
