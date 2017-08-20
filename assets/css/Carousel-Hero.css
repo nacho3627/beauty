@@ -1,0 +1,69 @@
+div.jumbotron.carousel-hero {
+  color:#fff;
+  text-align:center;
+  background-size:cover;
+  background-position:center;
+  padding-top:100px;
+  padding-bottom:100px;
+  margin-bottom:0;
+}
+
+h1.hero-title, h2.hero-title, h3.hero-title {
+  text-shadow:0 3px 3px rgba(0,0,0,0.4);
+  color:#fff;
+}
+
+p.hero-subtitle {
+  max-width:600px;
+  margin:25px auto;
+  padding:10px 15px;
+  color:#fff;
+}
+
+#carousel-1 {
+  height:248px;
+  margin-top:20px;
+  margin-bottom: 20px;
+
+}
+
+.carousel-inner, .carousel-inner .item {
+  height:100%;
+  width:100%;
+}
+
+.carousel-indicators {
+  position:absolute;
+  bottom:-6px;
+  left:62px;
+}
+
+.carousel-control.right, .carousel-control.left {
+  background:none;
+}
+
+/* Responsive */
+
+@media (max-width: 991px) {
+  #carousel-1 {
+    height: 190px;
+  }
+}
+
+@media (max-width: 414px) {
+  #carousel-1 {
+    height: 100px;
+  }
+}
+
+@media (max-width: 375px) {
+  #carousel-1 {
+    height: 91px;
+  }
+}
+
+@media (max-width: 320px) {
+  #carousel-1 {
+    height: 77px;
+  }
+}

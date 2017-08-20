@@ -1,0 +1,37 @@
+@keyframes toRightFromLeft {
+  49% {
+    transform:translate(100%);
+  }
+  50% {
+    opacity:0;
+    transform:translate(-100%);
+  }
+  51% {
+    opacity:1;
+  }
+}
+
+#funcionamiento:hover:before {
+  -webkit-animation:toRightFromLeft 0.3s forwards;
+  -moz-animation:toRightFromLeft 0.3s forwards;
+  animation:toRightFromLeft 0.3s forwards;
+}
+
+#impulsos:hover:before {
+  -webkit-animation:toRightFromLeft 0.3s forwards;
+  -moz-animation:toRightFromLeft 0.3s forwards;
+  animation:toRightFromLeft 0.3s forwards;
+}
+
+#canje-de-puntos:hover:before {
+  -webkit-animation:toRightFromLeft 0.3s forwards;
+  -moz-animation:toRightFromLeft 0.3s forwards;
+  animation:toRightFromLeft 0.3s forwards;
+}
+
+#documentos:hover:before {
+  -webkit-animation:toRightFromLeft 0.3s forwards;
+  -moz-animation:toRightFromLeft 0.3s forwards;
+  animation:toRightFromLeft 0.3s forwards;
+}
+

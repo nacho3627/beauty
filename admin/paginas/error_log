@@ -1,0 +1,3 @@
+[31-May-2017 18:27:09 UTC] PHP Warning:  require_once(auth-super.php): failed to open stream: No such file or directory in /home/beacard/public_html/admin/paginas/gestion.php on line 2
+[31-May-2017 18:27:09 UTC] PHP Fatal error:  require_once(): Failed opening required 'auth-super.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/admin/paginas/gestion.php on line 2
+[31-May-2017 18:30:59 UTC] PHP Notice:  Undefined index: autentificado in /home/beacard/public_html/admin/scripts/auth-super.php on line 10

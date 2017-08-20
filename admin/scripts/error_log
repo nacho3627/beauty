@@ -1,0 +1,4 @@
+[31-May-2017 18:30:49 UTC] PHP Warning:  require_once(paginas/header.php): failed to open stream: No such file or directory in /home/beacard/public_html/admin/scripts/logout.php on line 6
+[31-May-2017 18:30:49 UTC] PHP Fatal error:  require_once(): Failed opening required 'paginas/header.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/admin/scripts/logout.php on line 6
+[31-May-2017 18:31:04 UTC] PHP Warning:  require_once(paginas/header.php): failed to open stream: No such file or directory in /home/beacard/public_html/admin/scripts/logout.php on line 6
+[31-May-2017 18:31:04 UTC] PHP Fatal error:  require_once(): Failed opening required 'paginas/header.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/admin/scripts/logout.php on line 6
