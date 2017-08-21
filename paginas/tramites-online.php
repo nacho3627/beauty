@@ -79,7 +79,7 @@
                                         <input class="form-control" type="email" id="email" name="email">
                                         <small class="email invalid hidden">Ingrese un email válido.</small>
                                         <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img-div">
-                                            <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img"><i class="glyphicon glyphicon-camera"></i></div>
+                                            <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img"><i id="cam-icon" class="glyphicon glyphicon-camera"></i></div>
                                             <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img-input">
                                                 <label for="archivo">Cargar foto de diploma u otro aval Profesional:</label>
                                                 <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="10000000">
