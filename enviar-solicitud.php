@@ -118,6 +118,8 @@ if (mysqli_connect_errno($conexion)) {
 	echo "error en la conexion a base de datos: " . mysqli_connect_error() . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
 	}
 
+
+
 // Revisa que el cliente no esté registrado
 $nuevo_cliente = mysqli_query($conexion, "SELECT cedula FROM clientes WHERE cedula = '$cedula'");
 
@@ -128,14 +130,15 @@ if (mysqli_num_rows($nuevo_cliente) > 0) {
         
 
         // Procesa el fichero de imagen recibido:
-        if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/")) {
-            mkdir($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/", 0777);
+        if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/beauty" . "/archivos/" . $cedula . "/")) {
+            mkdir($_SERVER['DOCUMENT_ROOT']  . "/beauty" . "/archivos/" . $cedula . "/", 0777);
         }
+        if (move_uploaded_file($_FILES['fichero-imagen']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/beauty" . $ruta_archivo)){ 
+                            //Procesa imagen - comprime
+                          //  redimensionar_jpeg($_SERVER['DOCUMENT_ROOT'] . "/beauty" . $ruta_archivo, $_SERVER['DOCUMENT_ROOT']  . "/beauty" . $ruta_archivo . "_comp", 800, 600, 70);
 
-        if (move_uploaded_file($_FILES['fichero-imagen']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $ruta_archivo)){ 
-                            
                             // Graba en la base de datos
-                            $sql = "INSERT INTO clientes (f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2) VALUES ('$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2')";
+                            $sql = "INSERT INTO clientes (id, f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2) VALUES (NULL, '$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2')";
 
                             if (mysqli_query($conexion, $sql)) {
                                 
