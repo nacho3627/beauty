@@ -349,6 +349,11 @@ small.invalid {
   width:73%;
 }
 
+#thumb {
+  height: 100px;
+  width: auto;
+}
+
 @media (max-width:991px) {
   #img-input {
     float:none;

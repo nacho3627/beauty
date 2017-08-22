@@ -106,6 +106,32 @@ $('#nacimiento').datepicker({
 				todoOk = false;
 			};
 		
+			if(todoOk){
+				// Genero imagen base64
+				var dataurl = $('#thumb').toDataURL("image/jpeg");
+				// Envio al servidor
+		    	$.ajax({
+    	    		url:"../../graba-imagen.php",
+    	    		// Enviar un parámetro post con el nombre base64 y con la imagen en el
+    	    		data:{
+    	        		base64: dataurl,
+    	        		cedula: cedula
+    	    			},
+    	    		type:"post",
+    	    		done:function(){
+    	        		console.log("Img sent");
+    	        		todoOk = false;
+    	        	},
+    	        	fail: function(){
+    	        		todoOk = false;
+    	        	}
+    		});
+
+		    return todoOk;
+
+			};
+			
+
 		return todoOk;
 			
 		});

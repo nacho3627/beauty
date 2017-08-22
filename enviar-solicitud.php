@@ -20,10 +20,10 @@ date_default_timezone_set("America/Montevideo");
 <body>
     <header>
         <div id="logo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><img src="assets/img/assets/logo.png"></div><img class="hidden-xs" src="assets/img/assets/mariposa-04.png" id="mariposa"></header>
-
 <div class="container" id="enviar-solicitud" style="margin-top: 18vh;">
 
 <?php
+echo $_POST[''];
 /// RECUPERAR DATOS DE FORMULARIO
 // Datos personales del titular
 $nombre = $_POST['nombre'];
@@ -151,7 +151,7 @@ if (mysqli_num_rows($nuevo_cliente) > 0) {
                                     echo "Error: " . $sql . "<br>" . mysqli_error($conexion) . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
                                        }
                     } else { 
-                            echo "<p style='text-align: center;'>Ocurrió algún error al subir el fichero. No se pudo continuar con el envío de la solicitud.<br>Comunicarse con <a href='mailto:soporte@casani.com.uy'>soporte@casani.com.uy</a></p><p style='text-align: center;'><a href='http://www.beautycard.com.uy/tramites-online'>Volver al formulario</a></p>"; 
+                            echo "<p style='text-align: center;'>" . $_FILES['fichero-imagen']['size'] . "Ocurrió algún error al subir el fichero. No se pudo continuar con el envío de la solicitud.<br>Comunicarse con <a href='mailto:soporte@casani.com.uy'>soporte@casani.com.uy</a></p><p style='text-align: center;'><a href='http://www.beautycard.com.uy/tramites-online'>Volver al formulario</a></p>"; 
                             } 
                      
         }
