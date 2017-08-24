@@ -1,21 +1,22 @@
 $(document).ready(function(){
 
-$('#nacimiento').datepicker({
-    format: "dd/mm/yyyy",
-    endDate: "31-12-1999",
-    language: "es",
-    autoclose: true
-});
+	$('#nacimiento').datepicker({
+    	format: "dd/mm/yyyy",
+    	endDate: "31-12-1999",
+    	language: "es",
+    	autoclose: true
+	});
 
-/* VALIDACION SOLICITUD BEAUTY CARD */
+	/* VALIDACION SOLICITUD BEAUTY CARD */
 
-		$('#btn-enviar').click(function() {
+		$('#btn-enviar').click(function(e) {
+			e.preventDefault();
 			var todoOk = true;
 			
 			var nombre = $('#nombre').val();
 			if (nombre.length < 5) {
 				$('.nombre.invalid').removeClass('hidden');
-				totodoOk = false;
+				todoOk = false;
 			};
 			
 			var cedula = $('#cedula').val();
@@ -101,6 +102,11 @@ $('#nacimiento').datepicker({
 				todoOk = false;
 			};
 
+			var nombreAut1 = $('#nombre-aut-1').val();
+			var nombreAut2 = $('#nombre-aut-2').val();
+			var cedulaAut1 = $('#cedula-aut-1').val();
+			var cedulaAut2 = $('#cedula-aut-2').val();
+
 			if (!($('#condiciones').is(':checked'))) {
 				$('.condiciones.invalid').removeClass('hidden');
 				todoOk = false;
@@ -108,31 +114,48 @@ $('#nacimiento').datepicker({
 		
 			if(todoOk){
 				// Genero imagen base64
-				var dataurl = $('#thumb').toDataURL("image/jpeg");
+				//var dataurl = ($('#thumb')[0]).toDataURL("image/jpeg");
 				// Envio al servidor
+		    	
 		    	$.ajax({
-    	    		url:"../../graba-imagen.php",
+    	    		async: true,
+    	    		dataType: "html",
+    	    		contentType: "application/x-www-form-urlencoded",
+    	    		url: "enviar-solicitud.php",
     	    		// Enviar un parámetro post con el nombre base64 y con la imagen en el
-    	    		data:{
-    	        		base64: dataurl,
-    	        		cedula: cedula
+    	    		data: {
+    	        		nombre: nombre,
+    	        		cedula: cedula,
+    	        		nacimiento: nacimiento,
+    	        		telefono: telefono,
+    	        		celular: celular,
+    	        		domicilio: domicilio,
+    	        		departamento: departamento,
+    	        		ciudad: ciudad,
+    	        		razonSocial: razonSocial,
+    	        		rut: rut,
+    	        		email: email,
+    	        		area: area,
+    	        		institucion: institucion,
+    	        		rol: rol,
+    	        		nombreAut1: nombreAut1,
+    	        		nombreAut2: nombreAut2,
+    	        		cedulaAut1: cedulaAut1,
+    	        		cedulaAut2: cedulaAut2        		
     	    			},
-    	    		type:"post",
-    	    		done:function(){
-    	        		console.log("Img sent");
-    	        		todoOk = false;
-    	        	},
-    	        	fail: function(){
-    	        		todoOk = false;
-    	        	}
-    		});
+    	    		type: "post",
+    	    		success:function(response){
+             			alert(response);           
+           					},
+           			error: function() {
+    	        		alert('hubo error');
+    					}
+    				});
+           			
+			} else {
+				return false;
+				};
 
-		    return todoOk;
-
-			};
-			
-
-		return todoOk;
 			
 		});
 		
@@ -285,4 +308,4 @@ $('#nacimiento').datepicker({
 			};
 		});
 
-	});
+});

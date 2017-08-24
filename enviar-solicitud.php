@@ -1,29 +1,6 @@
 <?php header('Content-Type: text/html; charset=UTF-8');
 date_default_timezone_set("America/Montevideo");
-?>
-<html>
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Card</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
-    <link rel="stylesheet" href="assets/css/Carousel-Hero.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/transitions.css">
-</head>
 
-<body>
-    <header>
-        <div id="logo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><img src="assets/img/assets/logo.png"></div><img class="hidden-xs" src="assets/img/assets/mariposa-04.png" id="mariposa"></header>
-<div class="container" id="enviar-solicitud" style="margin-top: 18vh;">
-
-<?php
-echo $_POST[''];
 /// RECUPERAR DATOS DE FORMULARIO
 // Datos personales del titular
 $nombre = $_POST['nombre'];
@@ -34,7 +11,7 @@ $celular = $_POST['celular'];
 $domicilio = $_POST['domicilio'];
 $departamento = $_POST['departamento'];
 $ciudad = $_POST['ciudad'];
-$razonSocial = $_POST['razon-social'];
+$razonSocial = $_POST['razonSocial'];
 $rut = $_POST['rut'];
 $email = $_POST['email'];
 $ingreso = date("d/m/Y") . ' - ' . date("h:i:sa");
@@ -46,16 +23,10 @@ $institucion = $_POST['institucion'];
 $rol = $_POST['rol'];
 
 // Datos de Autorizados:
-$nombreAut1 = $_POST['nombre-aut-1'];
-$cedulaAut1 = $_POST['cedula-aut-1'];
-$nombreAut2 = $_POST['nombre-aut-2'];
-$cedulaAut2 = $_POST['cedula-aut-2'];
-
-$condiciones = $_POST['condiciones'];
-
-// Datos del archivo 
-$nombre_archivo = 'aval.jpg';
-$ruta_archivo = "/archivos/" . $cedula . "/" . $nombre_archivo;
+$nombreAut1 = $_POST['nombreAut1'];
+$cedulaAut1 = $_POST['cedulaAut1'];
+$nombreAut2 = $_POST['nombreAut2'];
+$cedulaAut2 = $_POST['cedulaAut2'];
         
 // DATOS PARA EL MAIL
 // Para el envio en formato html
@@ -104,7 +75,6 @@ $mensaje = "
 ";
 
 
-
 /// CONECTA A LA BASE DE DATOS
 
 $servidor = "localhost";
@@ -118,57 +88,35 @@ if (mysqli_connect_errno($conexion)) {
 	echo "error en la conexion a base de datos: " . mysqli_connect_error() . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
 	}
 
-
-
 // Revisa que el cliente no esté registrado
 $nuevo_cliente = mysqli_query($conexion, "SELECT cedula FROM clientes WHERE cedula = '$cedula'");
 
 if (mysqli_num_rows($nuevo_cliente) > 0) { 
-    echo "<p style='text-align: center;'>Esta cédula ya fue ingresada al sistema por lo tanto ésta solicitud no puede ser procesada. Cualquier duda comunicate con nosotros al 2408 1563.</p> 
-          <p style='text-align: center;'><a href='http://www.beautycard.com.uy/tramites-online'>Volver al formulario</a></p>"; 
+        echo "Ya estas registrado";
     } else {
-        
+                // Graba en la base de datos
+                $sql = "INSERT INTO clientes (id, f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2) VALUES (NULL, '$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2')";
 
-        // Procesa el fichero de imagen recibido:
-        if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/beauty" . "/archivos/" . $cedula . "/")) {
-            mkdir($_SERVER['DOCUMENT_ROOT']  . "/beauty" . "/archivos/" . $cedula . "/", 0777);
-        }
-        if (move_uploaded_file($_FILES['fichero-imagen']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/beauty" . $ruta_archivo)){ 
-                            //Procesa imagen - comprime
-                          //  redimensionar_jpeg($_SERVER['DOCUMENT_ROOT'] . "/beauty" . $ruta_archivo, $_SERVER['DOCUMENT_ROOT']  . "/beauty" . $ruta_archivo . "_comp", 800, 600, 70);
-
-                            // Graba en la base de datos
-                            $sql = "INSERT INTO clientes (id, f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2) VALUES (NULL, '$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2')";
-
-                            if (mysqli_query($conexion, $sql)) {
+                if (mysqli_query($conexion, $sql)) {
                                 
                                 // Envía email a administrador
                                 mail($destinatario, $asunto, $mensaje, $headers);
+                                // Procesa el fichero de imagen recibido:
+                                $codigo = $_POST['imagen'];
+                                $divide = explode(",", $codigo);
+                                $codigoLimpio = base64_decode($divide[1]);
+                                $path = "/users/nacho/sites/beauty/prueba/aval_" . $cedula . ".jpg";
+                                //Graba
+                                file_put_contents($path, $codigoLimpio);
 
                                 echo "<p style='text-align: center;'>Solicitud enviada correctamente</p>
                                 <p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conexion) . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
-                                       }
-                    } else { 
-                            echo "<p style='text-align: center;'>" . $_FILES['fichero-imagen']['size'] . "Ocurrió algún error al subir el fichero. No se pudo continuar con el envío de la solicitud.<br>Comunicarse con <a href='mailto:soporte@casani.com.uy'>soporte@casani.com.uy</a></p><p style='text-align: center;'><a href='http://www.beautycard.com.uy/tramites-online'>Volver al formulario</a></p>"; 
-                            } 
-                     
-        }
+                                    } else {
+                                        echo "Error: " . $sql . "<br>" . mysqli_error($conexion) . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
+                                            }
+                    } 
+                    
 
 // Cierra conexion
 mysqli_close($conexion);
 ?>
-
-</div>
-
-    </div>
-    <footer style="position: fixed; bottom: 0px;"><img src="assets/img/assets/logo.png" id="logo-footer"><span>Copyright Casani 2017</span></footer>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-</body>
-
-</html>

@@ -9,7 +9,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="solicitud">
-                        <form name="solicitud" id="form-solicitud"  method="post" enctype="multipart/form-data">
+                        <form name="solicitud" id="form-solicitud" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
                                     <h4>DATOS PERSONALES DEL TITULAR</h4>
