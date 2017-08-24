@@ -77,9 +77,11 @@ $(document).ready(function(){
 				$('.email.invalid').removeClass('hidden');
 				todoOk = false;
 			};
-
+// FALTAN AGREGAR OTRAS EXTENSIONES DE IMAGEN
 			var archivo = $('#archivo').val();
-			if (archivo == '') {
+			var split = archivo.split(".");
+			var ext = split[1];
+			if (archivo == '' || ext !== "jpg") {
 				$('.archivo.invalid').removeClass('hidden');
 				todoOk = false;
 			};
@@ -113,10 +115,8 @@ $(document).ready(function(){
 			};
 		
 			if(todoOk){
-				// Genero imagen base64
-				//var dataurl = ($('#thumb')[0]).toDataURL("image/jpeg");
+				
 				// Envio al servidor
-		    	
 		    	$.ajax({
     	    		async: true,
     	    		dataType: "html",
@@ -135,6 +135,7 @@ $(document).ready(function(){
     	        		razonSocial: razonSocial,
     	        		rut: rut,
     	        		email: email,
+    	        		imagen: dataurl,
     	        		area: area,
     	        		institucion: institucion,
     	        		rol: rol,
