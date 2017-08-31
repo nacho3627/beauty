@@ -1,10 +1,12 @@
 var inputFile = document.getElementById("archivo");
 var imgContenedor = document.getElementById('img');
-var thumb = new Image();
 var dataurl;
 
 //Funcion de carga de imagen
 var upload = function(){
+	$('#img img').remove();
+	$('#cam-icon').removeClass('hidden');
+	var thumb = new Image();
 	thumb.src = '';
 	var filesToUpload = inputFile.files;
 	//Crear imagen
@@ -13,8 +15,9 @@ var upload = function(){
 	thumb.onload = function(){
     	var height = thumb.height;
     	var width = thumb.width;
+
 		// Oculto placeholder de imagen y añado img adaptada
-		document.getElementById('cam-icon').className += " hidden";
+		$('#cam-icon').addClass('hidden');
 		thumb.id = "thumb";
 		imgContenedor.appendChild(thumb);
 
@@ -33,24 +36,22 @@ var upload = function(){
     			height = MAX_HEIGHT;
   					}
 				}		
-		thumb.height = height;
-    	thumb.width = width;
+		//thumb.setAttribute('height', height);
+    	//thumb.setAttribute('width', width);
 
 		//Crear canvas
 		var canvas = document.createElement("canvas");
-		canvas.width = width;
-		canvas.height = height;
+		canvas.setAttribute('height', height);
+		canvas.setAttribute('width', width);
 		var ctx = canvas.getContext("2d");
 		ctx.drawImage(thumb, 0, 0, width, height);
-    	console.log(canvas);
-    	console.log(ctx);
-
 
 		//Transformo el canvas en dataurl
 		dataurl = canvas.toDataURL("image/jpeg");
-
     };
 };
 
 //Añado escuchas
+if(inputFile){
 inputFile.addEventListener("change", upload, false);
+};

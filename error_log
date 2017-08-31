@@ -366,3 +366,71 @@
 [19-Aug-2017 21:11:51 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 52
 [19-Aug-2017 21:11:51 America/Montevideo] PHP Notice:  Undefined index: condiciones in /home/beacard/public_html/enviar-solicitud.php on line 54
 [19-Aug-2017 21:11:51 America/Montevideo] PHP Notice:  Undefined index: fichero-imagen in /home/beacard/public_html/enviar-solicitud.php on line 135
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre in /home/beacard/public_html/enviar-solicitud.php on line 29
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula in /home/beacard/public_html/enviar-solicitud.php on line 30
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nacimiento in /home/beacard/public_html/enviar-solicitud.php on line 31
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: telefono in /home/beacard/public_html/enviar-solicitud.php on line 32
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: celular in /home/beacard/public_html/enviar-solicitud.php on line 33
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: domicilio in /home/beacard/public_html/enviar-solicitud.php on line 34
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: departamento in /home/beacard/public_html/enviar-solicitud.php on line 35
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: ciudad in /home/beacard/public_html/enviar-solicitud.php on line 36
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: razon-social in /home/beacard/public_html/enviar-solicitud.php on line 37
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: rut in /home/beacard/public_html/enviar-solicitud.php on line 38
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: email in /home/beacard/public_html/enviar-solicitud.php on line 39
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: area in /home/beacard/public_html/enviar-solicitud.php on line 44
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: institucion in /home/beacard/public_html/enviar-solicitud.php on line 45
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: rol in /home/beacard/public_html/enviar-solicitud.php on line 46
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 49
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 50
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 51
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 52
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: condiciones in /home/beacard/public_html/enviar-solicitud.php on line 54
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: fichero-imagen in /home/beacard/public_html/enviar-solicitud.php on line 135
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre in /home/beacard/public_html/enviar-solicitud.php on line 29
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula in /home/beacard/public_html/enviar-solicitud.php on line 30
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nacimiento in /home/beacard/public_html/enviar-solicitud.php on line 31
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: telefono in /home/beacard/public_html/enviar-solicitud.php on line 32
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: celular in /home/beacard/public_html/enviar-solicitud.php on line 33
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: domicilio in /home/beacard/public_html/enviar-solicitud.php on line 34
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: departamento in /home/beacard/public_html/enviar-solicitud.php on line 35
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: ciudad in /home/beacard/public_html/enviar-solicitud.php on line 36
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: razon-social in /home/beacard/public_html/enviar-solicitud.php on line 37
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: rut in /home/beacard/public_html/enviar-solicitud.php on line 38
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: email in /home/beacard/public_html/enviar-solicitud.php on line 39
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: area in /home/beacard/public_html/enviar-solicitud.php on line 44
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: institucion in /home/beacard/public_html/enviar-solicitud.php on line 45
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: rol in /home/beacard/public_html/enviar-solicitud.php on line 46
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 49
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 50
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 51
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 52
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: condiciones in /home/beacard/public_html/enviar-solicitud.php on line 54
+[22-Aug-2017 09:16:37 America/Montevideo] PHP Notice:  Undefined index: fichero-imagen in /home/beacard/public_html/enviar-solicitud.php on line 135
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: nombre in /home/beacard/public_html/enviar-solicitud.php on line 29
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: cedula in /home/beacard/public_html/enviar-solicitud.php on line 30
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: nacimiento in /home/beacard/public_html/enviar-solicitud.php on line 31
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: telefono in /home/beacard/public_html/enviar-solicitud.php on line 32
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: celular in /home/beacard/public_html/enviar-solicitud.php on line 33
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: domicilio in /home/beacard/public_html/enviar-solicitud.php on line 34
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: departamento in /home/beacard/public_html/enviar-solicitud.php on line 35
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: ciudad in /home/beacard/public_html/enviar-solicitud.php on line 36
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: razon-social in /home/beacard/public_html/enviar-solicitud.php on line 37
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: rut in /home/beacard/public_html/enviar-solicitud.php on line 38
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: email in /home/beacard/public_html/enviar-solicitud.php on line 39
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: area in /home/beacard/public_html/enviar-solicitud.php on line 44
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: institucion in /home/beacard/public_html/enviar-solicitud.php on line 45
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: rol in /home/beacard/public_html/enviar-solicitud.php on line 46
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 49
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-1 in /home/beacard/public_html/enviar-solicitud.php on line 50
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: nombre-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 51
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: cedula-aut-2 in /home/beacard/public_html/enviar-solicitud.php on line 52
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: condiciones in /home/beacard/public_html/enviar-solicitud.php on line 54
+[28-Aug-2017 07:58:30 America/Montevideo] PHP Notice:  Undefined index: fichero-imagen in /home/beacard/public_html/enviar-solicitud.php on line 135
+[30-Aug-2017 14:54:38 UTC] PHP Warning:  require_once(pagina/promo-color.php): failed to open stream: No such file or directory in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:54:38 UTC] PHP Fatal error:  require_once(): Failed opening required 'pagina/promo-color.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:33 UTC] PHP Warning:  require_once(pagina/promo-color.php): failed to open stream: No such file or directory in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:33 UTC] PHP Fatal error:  require_once(): Failed opening required 'pagina/promo-color.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:36 UTC] PHP Warning:  require_once(pagina/promo-color.php): failed to open stream: No such file or directory in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:36 UTC] PHP Fatal error:  require_once(): Failed opening required 'pagina/promo-color.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:38 UTC] PHP Warning:  require_once(pagina/promo-color.php): failed to open stream: No such file or directory in /home/beacard/public_html/index.php on line 36
+[30-Aug-2017 14:55:38 UTC] PHP Fatal error:  require_once(): Failed opening required 'pagina/promo-color.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/beacard/public_html/index.php on line 36

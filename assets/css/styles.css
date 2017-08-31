@@ -581,3 +581,43 @@ button.btn.dropdown-toggle.btn-default {
     border: none;
     text-shadow: none;
 }
+
+/* Pagina Condiciones Promo Color */
+
+#promo-color ul {
+  margin:0px auto;
+}
+
+#promo-color {
+  margin-top:15px;
+}
+
+#promo-color li {
+  font:16px 'Merriweather';
+  text-align:justify;
+  margin-bottom:26px;
+  margin-left:-12px;
+  line-height:24px;
+}
+
+#promo-color .h3, h3 {
+  color:#0086ca;
+  margin:0px 0px 28px 0px;
+  font-size:32px;
+}
+
+#promo-color div {
+  border:solid 2px rgb(220,220,220);
+  padding:45px 110px;
+}
+
+#promo-color ol, ul {
+  list-style-position:outside;
+}
+
+/* Formularios Tramites Online */
+
+p#response {
+    text-align: center;
+    margin-top: 32px;
+}

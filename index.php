@@ -1,7 +1,9 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
+
  // Pequeña lógica para capturar la pagina que queremos abrir
     $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'impulsos';
+    $_GET['errorusuario'] = '';
 
 
     // El fragmento de html que contiene la cabecera de nuestra web
@@ -30,6 +32,10 @@ header('Content-Type: text/html; charset=UTF-8');
         case 'tramites-online':
             require_once 'paginas/tramites-online.php';
             break;   
+
+        case 'promo-color':
+            require_once 'paginas/promo-color.php';
+            break;
 
         default:
             require_once 'paginas/impulsos.php';

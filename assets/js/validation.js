@@ -77,11 +77,12 @@ $(document).ready(function(){
 				$('.email.invalid').removeClass('hidden');
 				todoOk = false;
 			};
-// FALTAN AGREGAR OTRAS EXTENSIONES DE IMAGEN
+
 			var archivo = $('#archivo').val();
 			var split = archivo.split(".");
-			var ext = split[1];
-			if (archivo == '' || ext !== "jpg") {
+			var ext = split[1] ? split[1].toLowerCase() : undefined;
+			var validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];
+			if (archivo == '' || $.inArray(ext, validExt) == -1) {
 				$('.archivo.invalid').removeClass('hidden');
 				todoOk = false;
 			};
@@ -145,11 +146,16 @@ $(document).ready(function(){
     	        		cedulaAut2: cedulaAut2        		
     	    			},
     	    		type: "post",
-    	    		success:function(response){
-             			alert(response);           
+    	    		success: function(response){
+             			$('#form-solicitud')[0].reset();
+             			$('#img img').remove();
+             			$('#cam-icon').removeClass('hidden');
+             			$('#form-solicitud').css('visibility', 'hidden');
+             			$('#solicitud').prepend('<p id="response">' + response + '<br/><a href="javascript:location.reload();">Volver</a></p>');          
            					},
            			error: function() {
-    	        		alert('hubo error');
+    	        		$('#form-solicitud').css('visibility', 'hidden');
+             			$('#solicitud').prepend('<p id="response">Se produjo un error al intentar enviar la solicitud. Por favor comuníquese con la empresa.<br/><a href="javascript:location.reload();">Volver</a></p>');
     					}
     				});
            			

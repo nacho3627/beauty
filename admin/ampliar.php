@@ -160,7 +160,7 @@ require_once 'paginas/header.php';
 
 	<div id="modal-aval">
 		<i id="cerrar-aval" class="glyphicon glyphicon-remove"></i>
-		<img id="imagen-aval" src="../archivos/<?php echo $datos['cedula'];?>/aval.jpg">
+		<img id="imagen-aval" src="../archivos/<?php echo $datos['cedula'] . '/aval_' . $datos['cedula'] . '.jpg';?>">
 	</div>
  
 <?php require_once 'paginas/footer.php';?>

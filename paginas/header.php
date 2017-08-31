@@ -23,7 +23,7 @@
 
 <body>
     <header>
-        <div id="logo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><img src="assets/img/assets/logo.png" alt="logo-beauty-card"></div><img class="hidden-xs" src="assets/img/assets/mariposa-04.png" alt="mariposa-beauty-card" id="mariposa"></header>
+        <div id="logo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><img src="assets/img/assets/logo.png" width="324" height="112" alt="logo-beauty-card"></div><img class="hidden-xs" src="assets/img/assets/mariposa-04.png" width="103" height="104" alt="mariposa-beauty-card" id="mariposa"></header>
     <div class="container">
         <div class="row" id="menu">
             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 li">

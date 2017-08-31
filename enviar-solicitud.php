@@ -68,7 +68,7 @@ $mensaje = "
             <p>Nombre autorizado 2: " . $nombreAut2 . "</p>
             <p>Cédula autorizado 2: " . $cedulaAut2 . "</p>
             <h1>AVAL PROFESIONAL:</h1>
-            <img width='800' alt='aval' src='http://www.beautycard.com.uy/archivos/" . $cedula . "/aval.jpg'/>
+            <img alt='aval' src='http://www.beautycard.com.uy/archivos/" . $cedula . "/aval_" . $cedula . ".jpg'/>
         </div>
     </body>
 </html>
@@ -85,7 +85,7 @@ $conexion = mysqli_connect($servidor, $user_db, $pass_db, $nombre_db);
 
 // Revisa si la conexion es correcta
 if (mysqli_connect_errno($conexion)) {
-	echo "error en la conexion a base de datos: " . mysqli_connect_error() . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
+	echo "Error en la conexion a base de datos: " . mysqli_connect_error();
 	}
 
 // Revisa que el cliente no esté registrado
@@ -93,26 +93,32 @@ $nuevo_cliente = mysqli_query($conexion, "SELECT cedula FROM clientes WHERE cedu
 
 if (mysqli_num_rows($nuevo_cliente) > 0) { 
         echo "Ya estas registrado";
+        mysqli_close($conexion);
+        die();
     } else {
+               
                 // Graba en la base de datos
-                $sql = "INSERT INTO clientes (id, f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2) VALUES (NULL, '$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2')";
+                $sql = "INSERT INTO clientes (f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2, procesada) VALUES ('$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2', '0')";
 
                 if (mysqli_query($conexion, $sql)) {
                                 
                                 // Envía email a administrador
                                 mail($destinatario, $asunto, $mensaje, $headers);
+                                // Crea el directiorio
+                                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/")) {
+                                    mkdir($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/", 0777);
+                                }
                                 // Procesa el fichero de imagen recibido:
                                 $codigo = $_POST['imagen'];
                                 $divide = explode(",", $codigo);
                                 $codigoLimpio = base64_decode($divide[1]);
-                                $path = "/users/nacho/sites/beauty/prueba/aval_" . $cedula . ".jpg";
+                                $path = $_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/aval_" . $cedula . ".jpg";
                                 //Graba
                                 file_put_contents($path, $codigoLimpio);
 
-                                echo "<p style='text-align: center;'>Solicitud enviada correctamente</p>
-                                <p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
+                                echo "Solicitud enviada correctamente";
                                     } else {
-                                        echo "Error: " . $sql . "<br>" . mysqli_error($conexion) . "<p style='text-align: center;'><a href='http://www.beautycard.com.uy'>Volver al inicio</a></p>";
+                                        echo "Error: " . $sql . mysqli_error($conexion);
                                             }
                     } 
                     

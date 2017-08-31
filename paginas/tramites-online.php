@@ -84,7 +84,7 @@
                                                 <label for="archivo">Cargar foto de diploma u otro aval Profesional:</label>
                                                 <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="10000000">
                                                 <input type="file" accept="image/*" name="fichero-imagen" id="archivo">
-                                                <small class="archivo invalid hidden">Suba una imagen de un Aval Profesional.</small>
+                                                <small class="archivo invalid hidden">Suba una imagen válida de un Aval Profesional.</small>
                                             </div>
                                         </div>
                                     </fieldset>
