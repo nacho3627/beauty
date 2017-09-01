@@ -92,30 +92,60 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 1 ORDER 
   ?>
 </table>
 </div>
-<span>
+<div id="paginador">
 <?php 
+	// Numero de paginas a mostrar 
+	$num_paginas = 10; 
+	
+	//limitando las paginas mostradas 
+	$pagina_intervalo = ceil($num_paginas / 2) - 1; 
+
+	// Calculamos desde que numero de pagina se mostrara 
+	$pagina_desde = $pagina - $pagina_intervalo; 
+	$pagina_hasta = $pagina + $pagina_intervalo; 
+
+	// Verificar que pagina_desde sea negativo 
+	if ($pagina_desde < 1) {
+		// le sumamos la cantidad sobrante para mantener el numero de enlaces mostrados
+		$pagina_hasta += (1 - $pagina_desde);
+		$pagina_desde = 1;
+		}
+
+	// Verificar que pagina_hasta no sea mayor que paginas_totales
+	if ($pagina_hasta > $total_paginas) { 
+		$pagina_desde -= ($pagina_hasta - $total_paginas); 
+		$pagina_hasta = $total_paginas; 
+		if ($pagina_desde < 1) { 
+			$pagina_desde = 1; 
+		} 
+	} 
+
+
+
 	//Mostrar paginacion
 	if ($total_paginas > 1) {
+		echo '<div class="pag"><a href="gestion-virtual.php?pag=1"><<</a></div>';
 		if ($pagina != 1) {
-			echo '<a href="gestion-virtual.php?pag=' . ($pagina - 1) . '">< </a>';
+			echo '<div class="pag"><a href="gestion-virtual.php?pag=' . ($pagina - 1) . '"><</a></div>';
 		}
 		//Muestro paginas
-		for ($i=1 ; $i <= $total_paginas ; $i++) {
+		for ($i = $pagina_desde; $i <= $pagina_hasta; $i++) {
 			if ($pagina == $i) {
-			echo $pagina . ' ';
+			echo '<div class="pag">' . $pagina . '</div>';
 			} else {
-				echo '<a href="gestion-virtual.php?pag=' . $i . '">' . $i . ' </a>';
+				echo '<div class="pag"><a href="gestion-virtual.php?pag=' . $i . '">' . $i . ' </a></div>';
 			}
 		}
 		if ($pagina != $total_paginas) {
-			echo '<a href="gestion-virtual.php?pag=' . ($pagina + 1) . '">></a>';
+			echo '<div class="pag"><a href="gestion-virtual.php?pag=' . ($pagina + 1) . '">></a></div>';
 		}
+		echo '<div class="pag"><a href="gestion-virtual.php?pag=' . $total_paginas . '">>></a></div>';
 	}
 
 	mysqli_free_result ($result);
 	mysqli_close($conn);
 ?>
-</span>
+</div>
 
 
 <?php require_once 'paginas/footer.php';?>

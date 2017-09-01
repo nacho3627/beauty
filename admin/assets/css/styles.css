@@ -717,3 +717,25 @@ input#buscar {
     box-shadow: none;
     border-radius: 5px;
 }
+
+/* Paginador */
+
+.pag {
+    display: inline-flex;
+    margin: 0px 1px;
+    align-items: center;
+    width: 25px;
+    justify-content: center;
+    height: 25px;
+    background-color: #47d1f7;
+    border-radius: 4px;
+}
+
+.pag a {
+    color: white;
+}
+
+.pag a:hover {
+    color: #ff278e;
+    text-decoration: none;
+}

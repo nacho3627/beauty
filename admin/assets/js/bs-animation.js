@@ -32,7 +32,9 @@ $(document).ready(function(){
 
 	//Alert al borrar
 	$('#borrar').click(function(){
-		confirm("Estas seguro?");
+		if(!confirm("Estas seguro?")) {
+			return false;
+		}
 	});
 
 
