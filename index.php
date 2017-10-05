@@ -45,7 +45,4 @@ header('Content-Type: text/html; charset=UTF-8');
 
     // El fragmento de html que contiene el pie de página de nuestra web
     require_once 'paginas/footer.php';
-
-
-
 ?>
