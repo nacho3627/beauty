@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <input type="password" name="contrasena" placeholder="Contraseña" class="form-control" />
-            <?php if (isset($_GET["errorusuario"]) && $_GET["errorusuario"] == "si") {echo "<label style='color: red; font-size: 14px;'>Datos incorrectos</label>";} ?>
+            <?php if ($_GET["errorusuario"] == "si") {echo "<label style='color: red; font-size: 14px;'>Datos incorrectos</label>";} ?>
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">Ingresar</button>

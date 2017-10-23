@@ -1,4 +1,5 @@
-<?php header('Content-Type: text/html; charset=UTF-8');
+<?php 
+header('Content-Type: text/html; charset=UTF-8');
 date_default_timezone_set("America/Montevideo");
 
 /// RECUPERAR DATOS DE FORMULARIO
@@ -8,13 +9,14 @@ $cedula = $_POST['cedula'];
 $nacimiento = $_POST['nacimiento'];
 $telefono = $_POST['telefono'];
 $celular = $_POST['celular'];
-$domicilio = $_POST['domicilio'];
+$domicilio = addslashes($_POST['domicilio']);
 $departamento = $_POST['departamento'];
 $ciudad = $_POST['ciudad'];
-$razonSocial = $_POST['razonSocial'];
+$razonSocial = addslashes($_POST['razonSocial']);
 $rut = $_POST['rut'];
 $email = $_POST['email'];
 $ingreso = date("d/m/Y") . ' - ' . date("h:i:sa");
+$ingreso_unix = time();
 
 
 // Datos profesionales del titular:
@@ -23,9 +25,9 @@ $institucion = $_POST['institucion'];
 $rol = $_POST['rol'];
 
 // Datos de Autorizados:
-$nombreAut1 = $_POST['nombreAut1'];
+$nombreAut1 = addslashes($_POST['nombreAut1']);
 $cedulaAut1 = $_POST['cedulaAut1'];
-$nombreAut2 = $_POST['nombreAut2'];
+$nombreAut2 = addslashes($_POST['nombreAut2']);
 $cedulaAut2 = $_POST['cedulaAut2'];
         
 // DATOS PARA EL MAIL
@@ -82,6 +84,7 @@ $user_db = "admin2051";
 $pass_db = "beauty123";
 $nombre_db = "beauty_sitio";
 $conexion = mysqli_connect($servidor, $user_db, $pass_db, $nombre_db);
+mysqli_set_charset($conexion, "utf8");
 
 // Revisa si la conexion es correcta
 if (mysqli_connect_errno($conexion)) {
@@ -98,7 +101,7 @@ if (mysqli_num_rows($nuevo_cliente) > 0) {
     } else {
                
                 // Graba en la base de datos
-                $sql = "INSERT INTO clientes (f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2, procesada) VALUES ('$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2', '0')";
+                $sql = "INSERT INTO clientes (f_ingreso_unix, f_ingreso, nombre, cedula, f_nacimiento, telefono, celular, domicilio, departamento, ciudad, razon_social, rut, email, area, institucion, rol, nombre_aut_1, cedula_aut_1, nombre_aut_2, cedula_aut_2, procesada) VALUES ('$ingreso_unix', '$ingreso', '$nombre', '$cedula', '$nacimiento', '$telefono', '$celular', '$domicilio', '$departamento', '$ciudad', '$razonSocial', '$rut', '$email', '$area', '$institucion', '$rol', '$nombreAut1', '$cedulaAut1', '$nombreAut2', '$cedulaAut2', '0')";
 
                 if (mysqli_query($conexion, $sql)) {
                                 

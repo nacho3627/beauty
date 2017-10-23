@@ -13,7 +13,7 @@ $num_registros = mysqli_num_rows($result);
 $tamano_pagina = 11;
 
 //Examino en que pagina estoy y el inicio del registro a mostrar
-$pagina = $_GET["pag"] ?? '';
+$pagina = $_GET["pag"];
 if (!$pagina) {
 	$inicio = 0;
 	$pagina = 1;
@@ -87,7 +87,7 @@ $result = mysqli_query($conn, "SELECT * FROM clientes WHERE procesada = 0 ORDER 
 	echo '<td>' . $row["ciudad"] . '</td>';
 	echo '<td>' . $row["email"] . '</td>';
 	echo '<td>' . ($row["procesada"] == 1 ? 'Si' : 'No') . '</td>';
-	echo '<td><a href="ampliar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-search"></i></a><a href="procesar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-ok"></i></a><a href="eliminar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
+	echo '<td><a href="ampliar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-search"></i></a><a href="procesar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-ok"></i></a><a id="borrar" href="eliminar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
 	}
 
   ?>

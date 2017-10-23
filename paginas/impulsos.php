@@ -5,6 +5,9 @@
     <div class="carousel-inner" role="listbox">
         <!-- Slides-->
         <div class="item active">
+            <a href="promo-color"><img src="assets/img/slider/promo-color.jpg"/></a>
+        </div>
+        <div class="item">
             <img src="assets/img/slider/lanzamiento-slider.jpg"/>
         </div>
         <div class="item">
@@ -25,6 +28,7 @@
         <li data-target="#carousel-1" data-slide-to="1"></li>
         <li data-target="#carousel-1" data-slide-to="2"></li>
         <li data-target="#carousel-1" data-slide-to="3"></li>
+        <li data-target="#carousel-1" data-slide-to="4"></li>
     </ol>
 </div>
         </div>

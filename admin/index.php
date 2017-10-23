@@ -3,6 +3,7 @@
 
 	 // Pequeña lógica para capturar la pagina que queremos abrir
     $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'login';
+    $_GET['errorusuario'] = '';
 
 	require_once 'paginas/header.php';
 
