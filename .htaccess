@@ -1,15 +1,18 @@
-<IfModule>
+<IfModule mod_rewrite.c>
+# Activar RewriteEngine
+
 RewriteEngine On
+RewriteBase /
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
 
-
+ 
 # Reescribir la URL solicitada por el usuario
 # Entrada:  pagina
 # Salida: index.php?p=pagina
 
-RewriteRule ^([a-zA-Z0-9-]*)/?$ beauty/index.php?p=$1
+RewriteRule ^([a-zA-Z0-9-]*)/?$ index.php?p=$1
 
 </IfModule>
 AddDefaultCharset utf-8
