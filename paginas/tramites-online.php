@@ -242,7 +242,7 @@
                                             <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
                                             <input type="file" accept="image/*" name="fichero-aval" id="fichero-aval">
                                         </div>
-                                        <small class="fichero-aval invalid">Seleccione el rol que corresponda.</small>
+                                        <small class="fichero-aval invalid">Suba una imagen válida de un Aval Profesional.</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-xs-12 tramites">
@@ -253,6 +253,7 @@
                                             <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
                                             <input type="file" accept="image/*" name="fichero-cedula" id="fichero-cedula">
                                         </div>
+                                        <small class="fichero-cedula invalid">Suba una imagen válida del frente de su Cédula de Identidad.</small>
                                     </div>
                                 </div>
                             </div>

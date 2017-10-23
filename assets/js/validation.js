@@ -89,6 +89,17 @@ $(document).ready(function(){
 				};
 			};
 
+			var archivoCedula = $('#fichero-cedula').val();
+			if(archivoCedula){
+				var split = archivoCedula.split(".");
+				var extCedula = split[1] ? split[1].toLowerCase() : undefined;
+				var validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];
+				if (archivoCedula == '' || $.inArray(extCedula, validExt) == -1) {
+					$('.fichero-cedula.invalid').removeClass('hidden');
+					todoOk = false;
+				};
+			};
+
 			var area = $('input[name=area]:checked').val();
 			console.log(area);
 			if (!area) {
@@ -140,6 +151,7 @@ $(document).ready(function(){
     	        		rut: rut,
     	        		email: email,
     	        		imagen: dataurl,
+    	        		imagenCedula: dataurlCedula,
     	        		area: area,
     	        		institucion: institucion,
     	        		rol: rol,
@@ -277,6 +289,15 @@ $(document).ready(function(){
 				$('.fichero-aval.invalid').addClass('hidden');
 			} else {
 				$('.fichero-aval.invalid').removeClass('hidden');
+			};
+		});
+
+		$('#fichero-cedula').change(function(){
+			var archivoCedula = $('#fichero-cedula').val();
+			if (archivoCedula !== '') {
+				$('.fichero-cedula.invalid').addClass('hidden');
+			} else {
+				$('.fichero-cedula.invalid').removeClass('hidden');
 			};
 		});
 
