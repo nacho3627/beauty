@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 	/* VALIDACION SOLICITUD BEAUTY CARD */
 
-		$('#btn-enviar').click(function(e) {
+		$('#enviar-solicitud').click(function(e) {
 			e.preventDefault();
 			var todoOk = true;
 			
@@ -78,29 +78,32 @@ $(document).ready(function(){
 				todoOk = false;
 			};
 
-			var archivo = $('#archivo').val();
-			var split = archivo.split(".");
-			var ext = split[1] ? split[1].toLowerCase() : undefined;
-			var validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];
-			if (archivo == '' || $.inArray(ext, validExt) == -1) {
-				$('.archivo.invalid').removeClass('hidden');
-				todoOk = false;
+			var archivo = $('#fichero-aval').val();
+			if(archivo){
+				var split = archivo.split(".");
+				var ext = split[1] ? split[1].toLowerCase() : undefined;
+				var validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];
+				if (archivo == '' || $.inArray(ext, validExt) == -1) {
+					$('.fichero-aval.invalid').removeClass('hidden');
+					todoOk = false;
+				};
 			};
 
 			var area = $('input[name=area]:checked').val();
-			if (area == undefined) {
+			console.log(area);
+			if (!area) {
 				$('.area.invalid').removeClass('hidden');
 				todoOk = false;
 			};
 
 			var institucion = $('input[name=institucion]:checked').val();
-			if (institucion == undefined) {
+			if (!institucion) {
 				$('.institucion.invalid').removeClass('hidden');
 				todoOk = false;
 			};
 
 			var rol = $('input[name=rol]:checked').val();
-			if (rol == undefined) {
+			if (!rol) {
 				$('.rol.invalid').removeClass('hidden');
 				todoOk = false;
 			};
@@ -268,12 +271,12 @@ $(document).ready(function(){
 		});
 
 
-		$('#archivo').change(function(){
-			var archivo = $('#archivo').val();
+		$('#fichero-aval').change(function(){
+			var archivo = $('#fichero-aval').val();
 			if (archivo !== '') {
-				$('.archivo.invalid').addClass('hidden');
+				$('.fichero-aval.invalid').addClass('hidden');
 			} else {
-				$('.archivo.invalid').removeClass('hidden');
+				$('.fichero-aval.invalid').removeClass('hidden');
 			};
 		});
 

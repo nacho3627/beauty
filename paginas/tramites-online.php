@@ -4,12 +4,12 @@
             <div>
                 <ul class="nav nav-tabs nav-justified" id="tabs-tramites">
                     <li class="active"><a href="#solicitud" role="tab" data-toggle="tab">Solicitud Beauty Card</a></li>
-                    <li class="hidden"><a href="#tab-2" role="tab" data-toggle="tab">Modificación de datos</a></li>
+                    <li ><a href="#mod-datos" role="tab" data-toggle="tab">Modificación de datos</a></li>
                     <li class="hidden"><a href="#tab-3" role="tab" data-toggle="tab">Canje de puntos</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="solicitud">
-                        <form name="solicitud" id="form-solicitud" method="post" enctype="multipart/form-data">
+                        <form name="solicitud" id="form-solicitud" method="post" enctype="multipart/form-data" novalidate>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
                                     <h4>DATOS PERSONALES DEL TITULAR</h4>
@@ -78,15 +78,6 @@
                                         <label for="email">E-mail: </label>
                                         <input class="form-control" type="email" id="email" name="email">
                                         <small class="email invalid hidden">Ingrese un email válido.</small>
-                                        <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img-div">
-                                            <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img"><i id="cam-icon" class="glyphicon glyphicon-camera"></i></div>
-                                            <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block" id="img-input">
-                                                <label for="archivo">Cargar foto de diploma u otro aval Profesional:</label>
-                                                <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="10000000">
-                                                <input type="file" accept="image/*" name="fichero-imagen" id="archivo">
-                                                <small class="archivo invalid hidden">Suba una imagen válida de un Aval Profesional.</small>
-                                            </div>
-                                        </div>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
@@ -225,63 +216,197 @@
                                         <h4>NOMBRES DE AUTORIZADOS</h4>
                                         <div class="input-col">
                                             <label for="nombre-aut-1">Nombre y apellido:</label>
-                                            <input class="form-control form-control" type="text" name="nombre-aut-1" id="nombre-aut-1">
+                                            <input class="form-control" type="text" name="nombre-aut-1" id="nombre-aut-1">
                                         </div>
                                         <div class="input-der input-col">
                                             <label for="cedula-aut-1">Cédula:</label>
-                                            <input class="form-control form-control" type="telefono" max="8" min="8" name="cedula-aut-1" id="cedula-aut-1">
+                                            <input class="form-control" type="telefono" max="8" min="8" name="cedula-aut-1" id="cedula-aut-1">
                                         </div>
                                         <div class="input-col">
                                             <label for="nombre-aut-2">Nombre y apellido:</label>
-                                            <input class="form-control form-control" type="text" name="nombre-aut-2" id="nombre-aut-2">
+                                            <input class="form-control type="text" name="nombre-aut-2" id="nombre-aut-2">
                                         </div>
                                         <div class="input-der input-col">
                                             <label for="cedula-aut-2">Cédula:</label>
-                                            <input class="form-control form-control" type="telefono" max="8" min="8" name="cedula-aut-2" id="cedula-aut-2">
-                                        </div>
-                                        <div id="terminos">
-                                            <input type="checkbox" name="condiciones" id="condiciones">
-                                            <label for="condiciones" >Acepto los <a data-target="#terminos-condiciones" data-toggle="modal" href="#">términos y condiciones</a> del Programa de Beneficios.</label>
-                                            <div class="modal fade" role="dialog" tabindex="-1" id="terminos-condiciones">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                            <div id="texto-condiciones">
-                                                                <h1 class="text-center">Términos y Condiciones:</h1>
-                                                                <p>1- La tarjeta Beauty Card es propiedad de Cosmética Profesional S.R.L. (en adelante Casani). La misma carece de valor comercial y únicamente se expide para identificar a sus clientes. No genera ningún tipo de obligación de compra por parte del solicitante ni compromiso de beneficios especiales por parte de Casani hacia este.</p>
-                                                                <p>2- El titular de Beauty Card se compromete a usarla únicamente dentro de los locales Casani y en eventos organizados y/o patrocinados por Casani.</p>
-                                                                <p>3- El titular es consciente que Beauty Card es exclusivamente de uso Profesional y en tal sentido se hace responsable de su correcto manejo respecto a terceras personas.</p>
-                                                                <p>4- El nombre del titular en esta Solicitud, debe coincidir con su cédula y es su responsabilidad, mantener actualizados todos sus datos personales. El titular puede solicitar que en el plástico figure un nombre con el que se identifica, diferente al que figura en su cédula.</p>
-                                                                <p>5- El titular podrá asignar hasta 2 personas debidamente autorizadas, para que puedan comprar a su nombre generándole los beneficios como titular.</p>
-                                                                <p>6- Casani se guarda el derecho de hacer participar al titular en sus eventuales promociones, eventos y/o campañas de marketing, de acuerdo a su política y cronograma de Programas de Beneficios.</p>
-                                                                <p>7- Casani se reserva el derecho de anular y retirar de circulación en cualquier momento, aquellas tarjetas que tengan un uso incorrecto, sin mediar explicación ni reparación de ninguna naturaleza al titular u otra persona vinculada a este.</p>
-                                                                <p>8- Los beneficios de Beauty Card son intransferibles y vencen cumplido los 120 días de inactividad como cliente o a los 24 meses de haberse generado.</p>
-                                                                <p>9- El titular tiene derecho a participar libremente de cualquier beneficio generado por el uso de la tarjeta de acuerdo a sus interesa y conveniencia.</p>
-                                                                <p>10- En el momento de la compra el titular puede mostrar el plástico o mencionar la cédula. Para hacer uso del beneficio, es condición necesaria hacerlo personalmente, presentar cédula y la tarjeta plástica. También podrá hacerlo desde su mail -que figura en esta Solicitud- completando un documento electrónico que le proporcionará Casani. El beneficio se enviará por encomienda únicamente al domicilio que figura en esta Solicitud. </p>
-                                                                <p>11- La validez de Beauty Card es por un año a partir de la emisión y se renovará automáticamente, si no hubiera aviso en contario por cualquiera de las partes. </p>
-                                                                <p>12- Este trámite y la reposición del plástico -por extravío o deterioro- pueden tener costo.</p>
-                                                                <p>13- La empresa podrá enviar novedades por e-mail pudiendo el cliente desuscribirse si lo desea.</p>
-                                                                <p>14- El e-mail que figura en este formulario servirá como medio para solicitar los beneficios que genere la tarjeta, haciéndose responsable únicamente el cliente, y no teniendo nada que reclamar, ante el mal uso del mismo.</p>
-                                                                <p>15- Se creará automáticamente una cuenta de usuario en el sitio web, la cual permitirá ver precios y comprar a través de el mismo.</p>
-                                                                <h4 class="text-center">Los medios válidos que tiene la empresa para comunicar las novedades, promociones y las excepciones a cualquiera de los puntos anteriores, serán el facebook y/o el sitio oficial de Casani.</h4></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <small class="condiciones invalid hidden">Tienes que aceptar los términos y condiciones del Programa.</small>
-
-                                        <div id="btn-solicitud">
-                                            <button id="btn-enviar" class="btn btn-default btn-enviar" type="submit">Enviar</button>
-                                            <button class="btn btn-default btn-enviar" type="reset">Borrar </button>
+                                            <input class="form-control" type="telefono" max="8" min="8" name="cedula-aut-2" id="cedula-aut-2">
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12 tramites">
+                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div" id="img-aval">
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img"><i class="fa fa-graduation-cap"></i></div>
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
+                                            <label for="fichero-aval">Cargar foto de diploma u otro aval Profesional: </label>
+                                            <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
+                                            <input type="file" accept="image/*" name="fichero-aval" id="fichero-aval">
+                                        </div>
+                                        <small class="fichero-aval invalid">Seleccione el rol que corresponda.</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12 tramites">
+                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div" id="img-cedula">
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" for="fichero-cedula"><i class="fa fa-id-card-o"></i></div>
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
+                                            <label for="fichero-cedula">Cargar foto del frente de la cédula de identidad: </label>
+                                            <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
+                                            <input type="file" accept="image/*" name="fichero-cedula" id="fichero-cedula">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12 tramites">
+                                    <div id="terminos">
+                                        <input type="checkbox" name="condiciones" id="condiciones">
+                                        <label for="condiciones">Acepto los <a data-target="#terminos-condiciones" data-toggle="modal" href="#">términos y condiciones</a> del Programa de Beneficios.</label>
+                                        <div class="modal fade" role="dialog" tabindex="-1" id="terminos-condiciones">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div id="texto-condiciones">
+                                                            <h1 class="text-center">Términos y Condiciones: </h1>
+                                                            <p>1- La tarjeta Beauty Card es propiedad de Cosmética Profesional S.R.L. (en adelante Casani). La misma carece de valor comercial y únicamente se expide para identificar a sus clientes. No genera
+                                                                ningún tipo de obligación de compra por parte del solicitante ni compromiso de beneficios especiales por parte de Casani hacia este. </p>
+                                                            <p>2- El titular de Beauty Card se compromete a usarla únicamente dentro de los locales Casani y en eventos organizados y/o patrocinados por Casani. </p>
+                                                            <p>3-El titular es consciente que Beauty Card es exclusivamente de uso Profesional y en tal sentido se hace responsable de su correcto manejo respecto a terceras personas. </p>
+                                                            <p>4- El nombre del titular en esta Solicitud, debe coincidir con su cédula y es su responsabilidad, mantener actualizados todos sus datos personales. El titular puede solicitar que en el plástico
+                                                                figure un nombre con el que se identifica, diferente al que figura en su cédula. </p>
+                                                            <p>5- El titular podrá asignar hasta 2 personas debidamente autorizadas, para que puedan comprar a su nombre generándole los beneficios como titular. </p>
+                                                            <p>6- Casani se guarda el derecho de hacer participar al titular en sus eventuales promociones, eventos y/o campañas de marketing, de acuerdo a su política y cronograma de Programas de Beneficios.
+                                                                </p>
+                                                            <p>7- Casani se reserva el derecho de anular y retirar de circulación en cualquier momento, aquellas tarjetas que tengan un uso incorrecto, sin mediar explicación ni reparación de ninguna naturaleza
+                                                                al titular u otra persona vinculada a este. </p>
+                                                            <p>8- Los beneficios de Beauty Card son intransferibles y vencen cumplido los 120 días de inactividad como cliente o a los 24 meses de haberse generado. </p>
+                                                            <p>9- El titular tiene derecho a participar libremente de cualquier beneficio generado por el uso de la tarjeta de acuerdo a sus interesa y conveniencia. </p>
+                                                            <p>10- En el momento de la compra el titular puede mostrar el plástico o mencionar la cédula. Para hacer uso del beneficio, es condición necesaria hacerlo personalmente, presentar cédula y la tarjeta
+                                                                plástica. También podrá hacerlo desde su mail -que figura en esta Solicitud- completando un documento electrónico que le proporcionará Casani. El beneficio se enviará por encomienda únicamente
+                                                                al domicilio que figura en esta Solicitud. </p>
+                                                            <p>11- La validez de Beauty Card es por un año a partir de la emisión y se renovará automáticamente, si no hubiera aviso en contario por cualquiera de las partes. </p>
+                                                            <p>12- Este trámite y la reposición del plástico -por extravío o deterioro- pueden tener costo. </p>
+                                                            <p>13- La empresa podrá enviar novedades por e-mail pudiendo el cliente desuscribirse si lo desea </p>
+                                                            <p>14- El e-mail que figura en este formulario servirá como medio para solicitar los beneficios que genere la tarjeta, haciéndose responsable únicamente el cliente, y no teniendo nada que reclamar,
+                                                                ante el mal uso del mismo. </p>
+                                                            <p>15- Se creará automáticamente una cuenta de usuario en el sitio web, la cual permitirá ver precios y comprar a través de el mismo </p>
+                                                            <h4 class="text-center">Los medios válidos que tiene la empresa para comunicar las novedades, promociones y las excepciones a cualquiera de los puntos anteriores, serán el facebook y/o el sitio oficial de Casani. </h4></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="condiciones invalid hidden">Tienes que aceptar los términos y condiciones del Programa.</small>
+                                </div>
+                                <div class="col-md-6 col-xs-12 tramites">
+                                    <div class="btn-formularios">
+                                        <button class="btn btn-default btn-enviar" id="enviar-solicitud" type="submit">Enviar </button>
+                                        <button class="btn btn-default btn-enviar" type="reset">Borrar </button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="tab-2">
-                        <p>Second tab content.</p>
+                    <div class="tab-pane" role="tabpanel" id="mod-datos">
+                        <form name="modifica" action="api/modificaDatos.php" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
+                                    <fieldset form="modifica">
+                                        <div class="input-col input-full-width">
+                                            <h4>CÉDULA DEL TITULAR:</h4></div>
+                                        <div class="input-col input-der input-full-width">
+                                            <input class="form-control" type="text" name="cedula">
+                                        </div>
+                                        <div class="input-col">
+                                            <label>Teléfono:</label>
+                                            <input class="form-control" type="telephone" name="telefono">
+                                        </div>
+                                        <div class="input-der input-col">
+                                            <label>Celular:</label>
+                                            <input class="form-control" type="telephone" name="celular">
+                                        </div>
+                                        <label>Domicilio </label>
+                                        <input class="form-control" type="text" name="domicilio">
+                                        <div class="input-col">
+                                            <label>Departamento:</label>
+                                            <select class="form-control" name="departamento">
+                                                <option value="Montevideo" selected="">Montevideo</option>
+                                                <option value="Artigas">Artigas</option>
+                                                <option value="Canelones">Canelones</option>
+                                                <option value="Cerro Largo">Cerro Largo</option>
+                                                <option value="Colonia">Colonia</option>
+                                                <option value="Durazno">Durazno</option>
+                                                <option value="Flores">Flores</option>
+                                                <option value="Florida">Florida</option>
+                                                <option value="Lavalleja">Lavalleja</option>
+                                                <option value="Maldonado">Maldonado</option>
+                                                <option value="Paysandú">Paysandú</option>
+                                                <option value="Río Negro">Río Negro</option>
+                                                <option value="Rivera">Rivera</option>
+                                                <option value="Rocha">Rocha</option>
+                                                <option value="Salto">Salto</option>
+                                                <option value="San José">San José</option>
+                                                <option value="Soriano">Soriano</option>
+                                                <option value="Tacuarembó">Tacuarembó</option>
+                                                <option value="Treinta y Tres">Treinta y Tres</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-der input-col">
+                                            <label>Ciudad:</label>
+                                            <input class="form-control" type="text" name="ciudad">
+                                        </div>
+                                        <label>Razón social: </label>
+                                        <input class="form-control" type="text" name="razon-social">
+                                        <label>RUT: </label>
+                                        <input class="form-control" type="text" name="rut">
+                                        <label>E-mail: </label>
+                                        <input class="form-control" type="email" name="email">
+                                        <h4>NOMBRES DE AUTORIZADOS</h4>
+                                        <div class="input-col">
+                                            <label>Nombre y Apellido:</label>
+                                            <input class="form-control form-control" type="text" name="nombre-aut-1">
+                                        </div>
+                                        <div class="input-der input-col">
+                                            <label>Cédula:</label>
+                                            <input class="form-control form-control" type="text" name="cedula-aut-1">
+                                        </div>
+                                        <div class="input-col">
+                                            <label>Nombre y Apellido:</label>
+                                            <input class="form-control form-control" type="text" name="nombre-aut-2">
+                                        </div>
+                                        <div class="input-der input-col">
+                                            <label>Cédula:</label>
+                                            <input class="form-control form-control" type="text" name="cedula-aut-2">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
+                                    <h6>Instrucciones: </h6>
+                                    <ol>
+                                        <li>Ingrese su numero de cédula sin puntos ni guiones. </li>
+                                        <li>Complete únicamente aquellos campos que requieran cambios. </li>
+                                        <li>Adjunte una imagen del frente de su cédula física. </li>
+                                    </ol>
+                                    <p><strong>Importante:</strong> Este formulario generará cambios en la solicitud original, siendo responsabilidad del titular de la tarjeta la veracidad de los datos. </p>
+                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div"
+                                    id="img-cedula-mod">
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" for="fichero-cedula"><i class="fa fa-id-card-o"></i></div>
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
+                                            <label for="fichero-cedula">Cargar foto del frente de la cédula de identidad: </label>
+                                            <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
+                                            <input type="file" accept="image/*" name="fichero-cedula" id="fichero-cedula">
+                                        </div>
+                                        <div id="contenedor-acuerdo">
+                                            <input type="checkbox" name="condiciones" id="acuerdo">
+                                            <label for="acuerdo">Soy el titular de la cuenta y me hago responsable por la veracidad de los datos ingresados.</label>
+                                        </div>
+                                    </div>
+                                    <div class="btn-formularios">
+                                        <button class="btn btn-default btn-enviar" type="submit">Enviar </button>
+                                        <button class="btn btn-default btn-enviar" type="reset">Borrar </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="tab-3">
                         <p>Third tab content.</p>

@@ -138,8 +138,8 @@ h1 {
 .impulsos.heading {
   background-image:url(../../assets/img/assets/icono-06.svg);
   background-repeat:no-repeat;
-  background-position:92% -41px;
-  background-size:230px;
+  background-position:86% 1px;
+  background-size:188px;
 }
 
 .productos.heading {
@@ -295,7 +295,7 @@ a, a:hover {
   height:32px;
 }
 
-#solicitud {
+#solicitud, #mod-datos {
   padding:0px 15px 15px 15px;
 }
 
@@ -312,6 +312,17 @@ small.invalid {
     padding: 1px 5px 2px 6px;
     border-radius: 2px;
     transition: height, 0.5s;
+    -webkit-transition: height, 0.5s;
+    -moz-transition: height, 0.5s;
+    -o-transition: height, 0.5s;
+}
+
+@media (max-width:767px) {
+  label {
+    font-weight:200;
+    font-size:16px;
+    margin:5px 0px 2px 0px;
+  }
 }
 
 .tramites {
@@ -327,41 +338,35 @@ small.invalid {
   float:right;
 }
 
-#img {
+.carga-img {
   width:100px;
   height:100px;
   background-color:#dcdcdc;
   margin-right:15px;
   display:inline-block;
   text-align:center;
-  overflow: hidden;
+  padding-top:28px;
 }
 
-#img i {
+.carga-img i {
   font-size:42px;
   color:#878786;
-  top: 26px;
 }
 
-#img-input {
+.img-input {
   display:inline-block;
   float:right;
   width:73%;
 }
 
-#thumb {
-  height: 100px;
-  width: auto;
-}
-
 @media (max-width:991px) {
-  #img-input {
+  .img-input {
     float:none;
   }
 }
 
-#img-div {
-  margin-top:15px;
+.img-div {
+  margin-top:35px;
 }
 
 #img-input input {
@@ -386,12 +391,12 @@ small.invalid {
   max-width:280px;
 }
 
-#terminos input {
+#terminos input, #contenedor-acuerdo input {
   margin-right:16px;
 }
 
-#terminos {
-  margin-top:6px;
+#terminos, #contenedor-acuerdo {
+  margin-top:14px;
   display:flex;
   align-items:center;
 }
@@ -408,20 +413,20 @@ small.invalid {
   text-shadow:none;
 }
 
-.btn-enviar:hover, .btn-enviar:focus {
+.btn-enviar:hover {
   border:solid 2px #47d1f7;
   color:white;
   background:#ff278e;
   transition-duration:0.5s;
 }
 
-#btn-solicitud {
+.btn-formularios {
   display:flex;
   justify-content:center;
-  margin-top:15px;
+  margin-top:25px;
 }
 
-#btn-solicitud button {
+.btn-formularios button {
   margin-right:10px;
 }
 
@@ -538,14 +543,6 @@ div.modulos {
   content:url(../../assets/img/assets/icono-11.svg);
 }
 
-/* Galeria de imagenes */
-
-.lb-details {
-    display: none;
-}
-
-/* Ventana modal terminos y condiciones */
-
 #texto-condiciones {
   overflow:scroll;
   height:100%;
@@ -568,21 +565,6 @@ div.modulos {
 #texto-condiciones h4 {
   color:#ff2b89;
 }
-
-#terminos-condiciones h1 {
-  font-size:32px;
-  margin-top:0px;
-}
-
-/* Selects */
-
-button.btn.dropdown-toggle.btn-default {
-    background: none;
-    border: none;
-    text-shadow: none;
-}
-
-/* Pagina Condiciones Promo Color */
 
 #promo-color ul {
   margin:0px auto;
@@ -615,9 +597,77 @@ button.btn.dropdown-toggle.btn-default {
   list-style-position:outside;
 }
 
-/* Formularios Tramites Online */
-
-p#response {
-    text-align: center;
-    margin-top: 32px;
+.img-input label {
+  line-height:18px;
+  font-size:16px;
+  font-weight:500;
 }
+
+@media (max-width:767px) {
+  .img-div div {
+    margin:0px auto;
+    text-align:center;
+  }
+}
+
+@media (max-width:767px) {
+  .img-input {
+    width:82%;
+    display:flex !important;
+    justify-content:center;
+    flex-direction:column;
+  }
+}
+
+@media (max-width:767px) {
+  input[type=file] {
+    margin:0px auto;
+  }
+}
+
+#mod-datos h6 {
+  color:rgb(71,209,247);
+  font-weight:800;
+  margin-top:0px;
+  font-size:22px;
+}
+
+#mod-datos li {
+  font-family:'Merriweather';
+}
+
+#mod-datos p {
+  font-size:14px;
+  margin-top:10px;
+  line-height:22px;
+}
+
+#mod-datos ol {
+  padding-left:19px;
+  line-height:22px;
+}
+
+@media (min-width:991px) {
+  #img-cedula-mod {
+    margin-top:136px;
+  }
+}
+
+.input-col h4 {
+  margin:7px 0px;
+}
+
+@media (max-width:767px) {
+  .input-full-width {
+    width:100%;
+  }
+}
+
+.input-full-width {
+  color:#ff2b89;
+}
+
+.input-full-width input, .input-full-width input:active, .input-full-width input:focus {
+  background-color:#ffc6df;
+}
+
