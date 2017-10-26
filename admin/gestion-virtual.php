@@ -13,7 +13,7 @@ $num_registros = mysqli_num_rows($result);
 $tamano_pagina = 11;
 
 //Examino en que pagina estoy y el inicio del registro a mostrar
-$pagina = $_GET["pag"];
+$pagina = $_GET["pag"] ?? '';
 if (!$pagina) {
 	$inicio = 0;
 	$pagina = 1;

@@ -217,6 +217,7 @@
                                         <div class="input-col">
                                             <label for="nombre-aut-1">Nombre y apellido:</label>
                                             <input class="form-control" type="text" name="nombre-aut-1" id="nombre-aut-1">
+                                            <small class="nombre-aut-1 invalid hidden">Si tiene autorizados es obligatorio ingresar nombre y cédula.</small>
                                         </div>
                                         <div class="input-der input-col">
                                             <label for="cedula-aut-1">Cédula:</label>
@@ -225,6 +226,7 @@
                                         <div class="input-col">
                                             <label for="nombre-aut-2">Nombre y apellido:</label>
                                             <input class="form-control type="text" name="nombre-aut-2" id="nombre-aut-2">
+                                            <small class="nombre-aut-2 invalid hidden">Si tiene autorizados es obligatorio ingresar nombre y cédula.</small>
                                         </div>
                                         <div class="input-der input-col">
                                             <label for="cedula-aut-2">Cédula:</label>
@@ -235,25 +237,26 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-xs-12 tramites">
-                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div" id="img-aval">
-                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img"><i class="fa fa-graduation-cap"></i></div>
+                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div">
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" id="img-aval"><i id="aval-icon" class="fa fa-graduation-cap"></i></div>
+
                                         <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
                                             <label for="fichero-aval">Cargar foto de diploma u otro aval Profesional: </label>
                                             <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
                                             <input type="file" accept="image/*" name="fichero-aval" id="fichero-aval">
                                         </div>
-                                        <small class="fichero-aval invalid">Suba una imagen válida de un Aval Profesional.</small>
+                                        <small class="fichero-aval invalid hidden">Suba una imagen válida de un Aval Profesional.</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-xs-12 tramites">
-                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div" id="img-cedula">
-                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" for="fichero-cedula"><i class="fa fa-id-card-o"></i></div>
+                                    <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div">
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" id="img-cedula" for="fichero-cedula"><i id="cedula-icon" class="fa fa-id-card-o"></i></div>
                                         <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
                                             <label for="fichero-cedula">Cargar foto del frente de la cédula de identidad: </label>
                                             <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
                                             <input type="file" accept="image/*" name="fichero-cedula" id="fichero-cedula">
                                         </div>
-                                        <small class="fichero-cedula invalid">Suba una imagen válida del frente de su Cédula de Identidad.</small>
+                                        <small class="fichero-cedula invalid hidden">Suba una imagen válida del frente de su Cédula de Identidad.</small>
                                     </div>
                                 </div>
                             </div>
@@ -301,36 +304,45 @@
                                 <div class="col-md-6 col-xs-12 tramites">
                                     <div class="btn-formularios">
                                         <button class="btn btn-default btn-enviar" id="enviar-solicitud" type="submit">Enviar </button>
-                                        <button class="btn btn-default btn-enviar" type="reset">Borrar </button>
+                                        <button type="button" class="btn btn-default btn-enviar" onclick="reset_form()">Borrar </button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
+         
+
+         <!--  FORMULARIO DE MODIFICACION DE DATOS  -->
+         
+
                     <div class="tab-pane" role="tabpanel" id="mod-datos">
-                        <form name="modifica" action="api/modificaDatos.php" method="post" enctype="multipart/form-data">
+                        <form name="modifica" id="form-modifica" action="api/modificaDatos.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 tramites contenido">
                                     <fieldset form="modifica">
                                         <div class="input-col input-full-width">
                                             <h4>CÉDULA DEL TITULAR:</h4></div>
                                         <div class="input-col input-der input-full-width">
-                                            <input class="form-control" type="text" name="cedula">
+                                            <input class="form-control" type="telephone" name="cedula-mod" id="cedula-mod">
+                                            <small class="cedula invalid hidden">Ingrese una cédula válida de 8 dígitos.</small>
                                         </div>
                                         <div class="input-col">
                                             <label>Teléfono:</label>
-                                            <input class="form-control" type="telephone" name="telefono">
+                                            <input class="form-control" type="telephone" name="telefono-mod" id="telefono-mod">
+                                            <small class="telefono invalid hidden">Ingrese un teléfono válido de 8 dígitos (sólo números).</small>
                                         </div>
                                         <div class="input-der input-col">
                                             <label>Celular:</label>
-                                            <input class="form-control" type="telephone" name="celular">
+                                            <input class="form-control" type="telephone" name="celular-mod" id="celular-mod">
+                                            <small class="celular invalid hidden">Ingrese un celular válido de 9 dígitos (sólo números).</small>
                                         </div>
                                         <label>Domicilio </label>
-                                        <input class="form-control" type="text" name="domicilio">
+                                        <input class="form-control" type="text" name="domicilio-mod" id="domicilio-mod">
                                         <div class="input-col">
                                             <label>Departamento:</label>
-                                            <select class="form-control" name="departamento">
-                                                <option value="Montevideo" selected="">Montevideo</option>
+                                            <select class="form-control" name="departamento-mod" id="departamento-mod">
+                                                <option value="" selected>Seleccionar</option>
+                                                <option value="Montevideo">Montevideo</option>
                                                 <option value="Artigas">Artigas</option>
                                                 <option value="Canelones">Canelones</option>
                                                 <option value="Cerro Largo">Cerro Largo</option>
@@ -353,30 +365,32 @@
                                         </div>
                                         <div class="input-der input-col">
                                             <label>Ciudad:</label>
-                                            <input class="form-control" type="text" name="ciudad">
+                                            <input class="form-control" type="text" name="ciudad-mod" id="ciudad-mod">
                                         </div>
                                         <label>Razón social: </label>
-                                        <input class="form-control" type="text" name="razon-social">
+                                        <input class="form-control" type="text" name="razon-social-mod" id="razon-social-mod">
                                         <label>RUT: </label>
-                                        <input class="form-control" type="text" name="rut">
+                                        <input class="form-control" type="text" name="rut-mod" id="rut-mod">
+                                        <small class="rut invalid hidden">Ingrese un Rut válido (sólo números).</small>
                                         <label>E-mail: </label>
-                                        <input class="form-control" type="email" name="email">
+                                        <input class="form-control" type="email" name="email-mod" id="email-mod">
+                                        <small class="email invalid hidden">Ingrese un email válido.</small>
                                         <h4>NOMBRES DE AUTORIZADOS</h4>
                                         <div class="input-col">
                                             <label>Nombre y Apellido:</label>
-                                            <input class="form-control form-control" type="text" name="nombre-aut-1">
+                                            <input class="form-control form-control" type="text" name="nombre-aut-1-mod" id="nombre-aut-1-mod">
                                         </div>
                                         <div class="input-der input-col">
                                             <label>Cédula:</label>
-                                            <input class="form-control form-control" type="text" name="cedula-aut-1">
+                                            <input class="form-control form-control" type="text" name="cedula-aut-1-mod" id="cedula-aut-1-mod">
                                         </div>
                                         <div class="input-col">
                                             <label>Nombre y Apellido:</label>
-                                            <input class="form-control form-control" type="text" name="nombre-aut-2">
+                                            <input class="form-control form-control" type="text" name="nombre-aut-2-mod" id="nombre-aut-2-mod">
                                         </div>
                                         <div class="input-der input-col">
                                             <label>Cédula:</label>
-                                            <input class="form-control form-control" type="text" name="cedula-aut-2">
+                                            <input class="form-control form-control" type="text" name="cedula-aut-2-mod" id="cedula-aut-2-mod">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -389,21 +403,23 @@
                                     </ol>
                                     <p><strong>Importante:</strong> Este formulario generará cambios en la solicitud original, siendo responsabilidad del titular de la tarjeta la veracidad de los datos. </p>
                                     <div class="visible-xs-block visible-sm-block visible-md-inline-block visible-lg-inline-block img-div"
-                                    id="img-cedula-mod">
-                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" for="fichero-cedula"><i class="fa fa-id-card-o"></i></div>
+                                   >
+                                        <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block carga-img" id="img-cedula-mod-datos"><i id="cedula-icon-mod-datos" class="fa fa-id-card-o"></i></div>
                                         <div class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block img-input">
-                                            <label for="fichero-cedula">Cargar foto del frente de la cédula de identidad: </label>
+                                            <label for="fichero-cedula-mod-datos">Cargar foto del frente de la cédula de identidad: </label>
                                             <input class="form-control" type="hidden" name="MAX_FILE_SIZE" value="3000000">
-                                            <input type="file" accept="image/*" name="fichero-cedula" id="fichero-cedula">
+                                            <input type="file" accept="image/*" name="fichero-cedula-mod" id="fichero-cedula-mod-datos">
                                         </div>
+                                        <small class="fichero-cedula invalid hidden">Suba una imagen válida del frente de su Cédula de Identidad.</small>
                                         <div id="contenedor-acuerdo">
-                                            <input type="checkbox" name="condiciones" id="acuerdo">
+                                            <input type="checkbox" name="acuerdo-mod" id="acuerdo-mod">
                                             <label for="acuerdo">Soy el titular de la cuenta y me hago responsable por la veracidad de los datos ingresados.</label>
+                                            <small class="acuerdo invalid hidden">Tienes que ser el titular de la cuenta para hacer cambios.</small>
                                         </div>
                                     </div>
                                     <div class="btn-formularios">
-                                        <button class="btn btn-default btn-enviar" type="submit">Enviar </button>
-                                        <button class="btn btn-default btn-enviar" type="reset">Borrar </button>
+                                        <button class="btn btn-default btn-enviar" id="enviar-mod-datos" type="submit">Enviar </button>
+                                        <button type="button" class="btn btn-default btn-enviar" onclick="reset_form()">Borrar </button>
                                     </div>
                                 </div>
                             </div>

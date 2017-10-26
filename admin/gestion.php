@@ -14,7 +14,7 @@ $num_registros = mysqli_num_rows($result);
 $tamano_pagina = 11;
 
 //Examino en que pagina estoy y el inicio del registro a mostrar
-$pagina = $_GET["pag"];
+$pagina = $_GET["pag"] ?? '';
 if (!$pagina) {
 	$inicio = 0;
 	$pagina = 1;
@@ -47,7 +47,7 @@ $result = mysqli_query($conn, "SELECT * FROM clientes ORDER BY id DESC LIMIT " .
 <col style="width: 70px">
 <col style="width: 180px">
 <col style="width: 40px">
-<col style="width: 70px">
+<col style="width: 85px">
 </colgroup>
   <tr>
     <th>Id</th>
@@ -72,7 +72,7 @@ $result = mysqli_query($conn, "SELECT * FROM clientes ORDER BY id DESC LIMIT " .
 <col style="width: 70px">
 <col style="width: 180px">
 <col style="width: 40px">
-<col style="width: 70px">
+<col style="width: 85px">
 </colgroup>
   <?php //Mostramos los registros
 	while ($row = mysqli_fetch_array ($result)) {
@@ -92,7 +92,7 @@ $result = mysqli_query($conn, "SELECT * FROM clientes ORDER BY id DESC LIMIT " .
 	echo '<td>' . $row["ciudad"] . '</td>';
 	echo '<td>' . $row["email"] . '</td>';
 	echo '<td>' . $estado . '</td>';
-	echo '<td><a href="ampliar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-search"></i></a><a href="modificar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-pencil"></i></a><a href="procesar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-ok"></i></a><a id="borrar" href="eliminar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
+	echo '<td><a id="pdf" href="pdf.php?id=' . $row["id"] . '&c=' . base64url_encode($row["cedula"]) . '"><i class="glyphicon glyphicon-save-file"></i></a><a href="ampliar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-search"></i></a><a href="modificar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-pencil"></i></a><a href="procesar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-ok"></i></a><a id="borrar" href="eliminar.php?id=' . $row["id"] . '"><i class="glyphicon glyphicon-trash"></i></a></td></tr>';
 	}
   ?>
 </table>

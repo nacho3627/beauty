@@ -26,9 +26,9 @@ $rol = $_POST['rol'];
 
 // Datos de Autorizados:
 $nombreAut1 = addslashes($_POST['nombreAut1']);
-$cedulaAut1 = $_POST['cedulaAut1'];
+$cedulaAut1 = is_numeric($_POST['cedulaAut1']) ?? '';
 $nombreAut2 = addslashes($_POST['nombreAut2']);
-$cedulaAut2 = $_POST['cedulaAut2'];
+$cedulaAut2 = is_numeric($_POST['cedulaAut2']) ?? '';
         
 // DATOS PARA EL MAIL
 // Para el envio en formato html
@@ -108,20 +108,28 @@ if (mysqli_num_rows($nuevo_cliente) > 0) {
                                 // Envía email a administrador
                                 mail($destinatario, $asunto, $mensaje, $headers);
                                 // Crea el directiorio
-                                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/")) {
-                                    mkdir($_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/", 0777);
+                                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/beauty/archivos/" . $cedula . "/")) {
+                                    mkdir($_SERVER['DOCUMENT_ROOT'] . "/beauty/archivos/" . $cedula . "/", 0777);
                                 }
-                                // Procesa el fichero de imagen recibido:
-                                $codigo = $_POST['imagen'];
-                                $divide = explode(",", $codigo);
-                                $codigoLimpio = base64_decode($divide[1]);
-                                $path = $_SERVER['DOCUMENT_ROOT'] . "/archivos/" . $cedula . "/aval_" . $cedula . ".jpg";
+                                // Procesa el fichero de imagen aval:
+                                $codigo_aval = $_POST['imagen_aval'];
+                                $divide_aval = explode(",", $codigo_aval);
+                                $codigoLimpio_aval = base64_decode($divide_aval[1]);
+                                $path_aval = $_SERVER['DOCUMENT_ROOT'] . "/beauty/archivos/" . $cedula . "/aval_" . $cedula . ".jpg";
                                 //Graba
-                                file_put_contents($path, $codigoLimpio);
+                                file_put_contents($path_aval, $codigoLimpio_aval);
+
+                                // Procesa el fichero de imagen cedula:
+                                $codigo_cedula = $_POST['imagen_cedula'];
+                                $divide_cedula = explode(",", $codigo_cedula);
+                                $codigoLimpio_cedula = base64_decode($divide_cedula[1]);
+                                $path_cedula = $_SERVER['DOCUMENT_ROOT'] . "/beauty/archivos/" . $cedula . "/cedula_" . $cedula . ".jpg";
+                                //Graba
+                                file_put_contents($path_cedula, $codigoLimpio_cedula);
 
                                 echo "Solicitud enviada correctamente";
                                     } else {
-                                        echo "Error: " . $sql . mysqli_error($conexion);
+                                        die("Error: " . $sql . mysqli_error($conexion));
                                             }
                     } 
                     
