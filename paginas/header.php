@@ -5,6 +5,9 @@
     <meta name="robots" content="index, follow">
     <meta name="description" content="Impulso es el único programa de beneficios para Profesionales de la Belleza y funciona a través de la tarjeta Beauty Card.">
     <title>Beauty Card - Programa Impulso</title>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=paginas/noscript.html">
+    </noscript>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">

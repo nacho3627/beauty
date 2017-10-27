@@ -375,11 +375,9 @@ $(document).ready(function(){
 			let todoOk = true;
 			
 			let cedula = $('#cedula-mod').val();
-			if (cedula.length != '') {
-				if (isNaN(cedula)) {
-					$('.cedula.invalid').removeClass('hidden');
-					todoOk = false;
-				};
+			if (cedula.length !== 8 || isNaN(cedula)) {
+				$('.cedula.invalid').removeClass('hidden');
+				todoOk = false;
 			};
 
 			let telefono = $('#telefono-mod').val();
@@ -392,46 +390,68 @@ $(document).ready(function(){
 
 			let celular = $('#celular-mod').val();
 			if (celular.length != '') {
-				if ((celular.length != 8) || (isNaN(celular))) {
+				if ((celular.length != 9) || (isNaN(celular))) {
 					$('.celular.invalid').removeClass('hidden');
 					todoOk = false;
 				};
 			};
 
-			var rut = $('#rut-mod').val();
+			let rut = $('#rut-mod').val();
 			if (isNaN(rut)) {
 				$('.rut.invalid').removeClass('hidden');
 				todoOk = false;
 			};
 
-			var email = $('#email-mod').val();
-			var expr = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+			let email = $('#email-mod').val();
+			let expr = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 			
 			if (email != '' && !expr.test(email)) {
 				$('.email.invalid').removeClass('hidden');
 				todoOk = false;
 			};
 
-			var archivoCedula = $('#fichero-cedula-mod').val();
+			let archivoCedula = $('#fichero-cedula-mod-datos').val();
 			if(archivoCedula){
-				var split = archivoCedula.split(".");
-				var extCedula = split[1] ? split[1].toLowerCase() : undefined;
-				var validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];			
-			};
-			if (archivoCedula == '' || $.inArray(extCedula, validExt) == -1) {
+				let split = archivoCedula.split(".");
+				let extCedula = split[1] ? split[1].toLowerCase() : undefined;
+				let validExt = ['jpg', 'png', 'jpeg', 'gif', 'tif', 'bmp'];	
+				if (archivoCedula == '' || $.inArray(extCedula, validExt) == -1) {
 					$('.fichero-cedula.invalid').removeClass('hidden');
 					todoOk = false;
+				};		
+			} else {
+				$('.fichero-cedula.invalid').removeClass('hidden');
+					todoOk = false;
 				};
+			
 
-			var nombreAut1 = $('#nombre-aut-1-mod').val();
-			var nombreAut2 = $('#nombre-aut-2-mod').val();
-			var cedulaAut1 = $('#cedula-aut-1-mod').val();
-			var cedulaAut2 = $('#cedula-aut-2-mod').val();
+			let cedulaAut1 = $('#cedula-aut-1-mod').val();
+			if (cedulaAut1 !== '' && cedulaAut1 !== 8) {
+				if (isNaN(cedulaAut1)){
+					$('.cedula-aut-1.invalid').removeClass('hidden');
+					todoOk = false;
+				};	
+			};
+
+
+			let cedulaAut2 = $('#cedula-aut-2-mod').val();
+			if (cedulaAut2 !== '' && cedulaAut2 !== 8) {
+				if (isNaN(cedulaAut2)){
+					$('.cedula-aut-2.invalid').removeClass('hidden');
+					todoOk = false;
+				};	
+			};
 
 			if (!($('#acuerdo-mod').is(':checked'))) {
 				$('.acuerdo.invalid').removeClass('hidden');
 				todoOk = false;
 			};
+
+
+			let razonSocial;
+			let nombreAut1 = $('#nombre-aut-1-mod').val();
+			let nombreAut2 = $('#nombre-aut-2-mod').val();
+		
 		
 			if(todoOk){
 				
@@ -440,12 +460,10 @@ $(document).ready(function(){
     	    		async: true,
     	    		dataType: "html",
     	    		contentType: "application/x-www-form-urlencoded",
-    	    		url: "enviar-solicitud.php",
+    	    		url: "enviar-modificacion.php",
     	    		// Enviar un parámetro post con el nombre base64 y con la imagen en el
     	    		data: {
-    	        		nombre: nombre,
     	        		cedula: cedula,
-    	        		nacimiento: nacimiento,
     	        		telefono: telefono,
     	        		celular: celular,
     	        		domicilio: domicilio,
@@ -454,11 +472,7 @@ $(document).ready(function(){
     	        		razonSocial: razonSocial,
     	        		rut: rut,
     	        		email: email,
-    	        		imagen_aval: dataurl_aval,
     	        		imagen_cedula: dataurl_cedula,
-    	        		area: area,
-    	        		institucion: institucion,
-    	        		rol: rol,
     	        		nombreAut1: nombreAut1,
     	        		nombreAut2: nombreAut2,
     	        		cedulaAut1: cedulaAut1,
@@ -466,18 +480,16 @@ $(document).ready(function(){
     	    			},
     	    		type: "post",
     	    		success: function(response){
-             			$('#form-solicitud')[0].reset();
-             			$('#img-aval img').remove();
+             			$('#form-modifica')[0].reset();
              			$('#img-cedula img').remove();
 
-             			$('#aval-icon').removeClass('hidden');
              			$('#cedula-icon').removeClass('hidden');
-             			$('#form-solicitud').css('visibility', 'hidden');
-             			$('#solicitud').prepend('<p id="response">' + response + '<br/><a href="javascript:location.reload();">Volver</a></p>');          
+             			$('#form-modifica').css('visibility', 'hidden');
+             			$('#mod-datos').prepend('<p id="response">' + response + '<br/><a href="javascript:location.reload();">Volver</a></p>');          
            					},
            			error: function() {
-    	        		$('#form-solicitud').css('visibility', 'hidden');
-             			$('#solicitud').prepend('<p id="response">Se produjo un error al intentar enviar la solicitud. Por favor comuníquese con la empresa.<br/><a href="javascript:location.reload();">Volver</a></p>');
+    	        		$('#form-modifica').css('visibility', 'hidden');
+             			$('#mod-datos').prepend('<p id="response">Se produjo un error al intentar enviar la modificación. Por favor comuníquese con la empresa.<br/><a href="javascript:location.reload();">Volver</a></p>');
     					}
     				});
            			
@@ -492,7 +504,7 @@ $(document).ready(function(){
 /* CONTROLES KEY UP MODIFICACION DE DATOS */				
 		
 		$('#cedula-mod').keyup(function(){
-			var cedula = $(this).val();
+			let cedula = $(this).val();
 			if (cedula.length == 8 && !isNaN(cedula)) {
 				$('.cedula.invalid').addClass('hidden');
 			} else {
@@ -502,7 +514,7 @@ $(document).ready(function(){
 
 
 		$('#telefono-mod').keyup(function(){
-			var telefono = $(this).val();
+			let telefono = $(this).val();
 			if (((telefono.length == '') || (telefono.length == 8)) && (!isNaN(telefono))) {
 				$('.telefono.invalid').addClass('hidden');
 			} else {
@@ -512,81 +524,36 @@ $(document).ready(function(){
 
 
 		$('#celular-mod').keyup(function(){
-			var celular = $(this).val();
-			if (((celular.length == '') || (celular.length == 8)) && (!isNaN(celular))) {
+			let celular = $(this).val();
+			if (((celular.length == '') || (celular.length == 9)) && (!isNaN(celular))) {
 				$('.celular.invalid').addClass('hidden');
 			} else {
 				$('.celular.invalid').removeClass('hidden');
 			};
 		});
 
-
-		$('#domicilio').keyup(function(){
-			var domicilio = $('#domicilio').val();
-			if (domicilio !== '') {
-				$('.domicilio.invalid').addClass('hidden');
-			} else {
-				$('.domicilio.invalid').removeClass('hidden');
-			};
-		});
-
-		$('#departamento').change(function(){
-			var departamento = $('#departamento').val();
-			if (departamento !== '') {
-				$('.departamento.invalid').addClass('hidden');
-			} else {
-				$('.departamento.invalid').removeClass('hidden');
-			};
-		});
-
-		$('#ciudad').keyup(function(){
-			var ciudad = $('#ciudad').val();
-			if (ciudad !== '') {
-				$('.ciudad.invalid').addClass('hidden');
-			} else {
-				$('.ciudad.invalid').removeClass('hidden');
-			};
-		});
-
-
-		$('#razon-social, #rut').keyup(function(){
-			var razonSocial = $('#razon-social').val();
-			var rut = $('#rut').val();
-			if((razonSocial !== '' && rut !== '') || (razonSocial == '' && rut == '')){
-				$('.rut.invalid').addClass('hidden');
-				$('.razon-social.invalid').addClass('hidden');
-			} else if (razonSocial !== '' && rut == '') {
+		$('#rut-mod').keyup(function(){
+			let rut = $('#rut-mod').val();
+			if((rut !== '') && (isNaN(rut))){
 				$('.rut.invalid').removeClass('hidden');
-				$('.razon-social.invalid').addClass('hidden');
-			} else if (razonSocial == '' && rut !== '') {
+			} else {
 				$('.rut.invalid').addClass('hidden');
-				$('.razon-social.invalid').removeClass('hidden');
 			};
 		});
 
 
-		$('#email').keyup(function(){
-			var email = $('#email').val();
-			var expr = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
-			if (email !== '' && expr.test(email)) {
-				$('.email.invalid').addClass('hidden');
-			} else {
+		$('#email-mod').keyup(function(){
+			let email = $('#email-mod').val();
+			let expr = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+			if (email !== '' && !expr.test(email)) {
 				$('.email.invalid').removeClass('hidden');
-			};
-		});
-
-
-		$('#fichero-aval').change(function(){
-			var archivo = $('#fichero-aval').val();
-			if (archivo !== '') {
-				$('.fichero-aval.invalid').addClass('hidden');
 			} else {
-				$('.fichero-aval.invalid').removeClass('hidden');
+				$('.email.invalid').addClass('hidden');
 			};
 		});
 
-		$('#fichero-cedula').change(function(){
-			var archivoCedula = $('#fichero-cedula').val();
+		$('#fichero-cedula-mod-datos').change(function(){
+			let archivoCedula = $('#fichero-cedula-mod-datos').val();
 			if (archivoCedula !== '') {
 				$('.fichero-cedula.invalid').addClass('hidden');
 			} else {
@@ -595,68 +562,33 @@ $(document).ready(function(){
 		});
 
 
-		$('input[name=area]').change(function(){
-			var area = $('input[name=area]:checked').val();
-			if (area !== undefined) {
-				$('.area.invalid').addClass('hidden');
-			} else {
-				$('.area.invalid').removeClass('hidden');
-			};
-		});
-
-		$('input[name=institucion]').change(function(){
-			var institucion = $('input[name=institucion]:checked').val();
-			if (institucion !== undefined) {
-				$('.institucion.invalid').addClass('hidden');
-			} else {
-				$('.institucion.invalid').removeClass('hidden');
-			};
-		});
-
-
-		$('input[name=rol]').change(function(){
-			var rol = $('input[name=rol]:checked').val();
-			if (rol !== undefined) {
-				$('.rol.invalid').addClass('hidden');
-			} else {
-				$('.rol.invalid').removeClass('hidden');
-			};
-		});
-
-
-		$('#condiciones').change(function(){
+		$('#acuerdo-mod').change(function(){
 			if ($(this).is(':checked')) {
-				$('.condiciones.invalid').addClass('hidden');
+				$('.acuerdo.invalid').addClass('hidden');
 			} else {
-				$('.condiciones.invalid').removeClass('hidden');
+				$('.acuerdo.invalid').removeClass('hidden');
 			};
 		});
 
-		$('#nombre-aut-1, #cedula-aut-1').keyup(function(){
-			let nombreAut1 = $('#nombre-aut-1').val();
-			let cedulaAut1 = $('#cedula-aut-1').val();
 
-			if((nombreAut1 !== '' && cedulaAut1 !== '') || (nombreAut1 == '' && cedulaAut1 == '')){
-				$('.nombre-aut-1.invalid').addClass('hidden');
-			} else if (nombreAut1 !== '' && cedulaAut1 == '') {
-				$('.nombre-aut-1.invalid').removeClass('hidden');
-			} else if (nombreAut1 == '' && cedulaAut1 !== '') {
-				$('.nombre-aut-1.invalid').removeClass('hidden');
+		$('#cedula-aut-1-mod').keyup(function(){
+			let cedulaAut1 = $(this).val();
+			if (cedulaAut1.length !== 8 || isNaN(cedulaAut1)) {
+				$('.cedula-aut-1.invalid').removeClass('hidden');
+			} else {
+				$('.cedula-aut-1.invalid').addClass('hidden');
 			};
 		});
 
-		$('#nombre-aut-2, #cedula-aut-2').keyup(function(){
-			let nombreAut2 = $('#nombre-aut-2').val();
-			let cedulaAut2 = $('#cedula-aut-2').val();
-
-			if((nombreAut2 !== '' && cedulaAut2 !== '') || (nombreAut2 == '' && cedulaAut2 == '')){
-				$('.nombre-aut-2.invalid').addClass('hidden');
-			} else if (nombreAut2 !== '' && cedulaAut2 == '') {
-				$('.nombre-aut-2.invalid').removeClass('hidden');
-			} else if (nombreAut2 == '' && cedulaAut2 !== '') {
-				$('.nombre-aut-2.invalid').removeClass('hidden');
+		$('#cedula-aut-2-mod').keyup(function(){
+			let cedulaAut2 = $(this).val();
+			if (cedulaAut2.length !== 8 || isNaN(cedulaAut2)) {
+				$('.cedula-aut-2.invalid').removeClass('hidden');
+			} else {
+				$('.cedula-aut-2.invalid').addClass('hidden');
 			};
 		});
+
 
 });
 
@@ -666,6 +598,9 @@ var reset_form = function(){
              			$('#img-cedula img').remove();
              			$('#aval-icon').removeClass('hidden');
              			$('#cedula-icon').removeClass('hidden');
+             			$('#img-cedula-mod-datos img').remove();
+             			$('#cedula-icon-mod-datos').removeClass('hidden');
              			$('#form-solicitud')[0].reset();
+             			$('#form-modifica')[0].reset();
              			$('.invalid').addClass('hidden');
 			}

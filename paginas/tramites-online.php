@@ -383,6 +383,7 @@
                                         <div class="input-der input-col">
                                             <label>Cédula:</label>
                                             <input class="form-control form-control" type="text" name="cedula-aut-1-mod" id="cedula-aut-1-mod">
+                                            <small class="cedula-aut-1 invalid hidden">Ingrese una cédula válida (sólo números).</small>
                                         </div>
                                         <div class="input-col">
                                             <label>Nombre y Apellido:</label>
@@ -391,6 +392,7 @@
                                         <div class="input-der input-col">
                                             <label>Cédula:</label>
                                             <input class="form-control form-control" type="text" name="cedula-aut-2-mod" id="cedula-aut-2-mod">
+                                            <small class="cedula-aut-2 invalid hidden">Ingrese una cédula válida (sólo números).</small>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -413,9 +415,9 @@
                                         <small class="fichero-cedula invalid hidden">Suba una imagen válida del frente de su Cédula de Identidad.</small>
                                         <div id="contenedor-acuerdo">
                                             <input type="checkbox" name="acuerdo-mod" id="acuerdo-mod">
-                                            <label for="acuerdo">Soy el titular de la cuenta y me hago responsable por la veracidad de los datos ingresados.</label>
-                                            <small class="acuerdo invalid hidden">Tienes que ser el titular de la cuenta para hacer cambios.</small>
+                                            <label for="acuerdo-mod">Soy el titular de la cuenta y me hago responsable por la veracidad de los datos ingresados.</label>
                                         </div>
+                                        <small class="acuerdo invalid hidden">Tienes que ser el titular de la cuenta para hacer cambios.</small>
                                     </div>
                                     <div class="btn-formularios">
                                         <button class="btn btn-default btn-enviar" id="enviar-mod-datos" type="submit">Enviar </button>
