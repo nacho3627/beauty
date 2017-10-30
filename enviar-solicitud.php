@@ -69,6 +69,8 @@ $mensaje = "
             <p>Cédula autorizado 1: " . $cedulaAut1 . "</p>
             <p>Nombre autorizado 2: " . $nombreAut2 . "</p>
             <p>Cédula autorizado 2: " . $cedulaAut2 . "</p>
+            <h1>CEDULA:</h1>
+            <img alt='cedula' src='http://www.beautycard.com.uy/archivos/" . $cedula . "/cedula_" . $cedula . ".jpg'/>
             <h1>AVAL PROFESIONAL:</h1>
             <img alt='aval' src='http://www.beautycard.com.uy/archivos/" . $cedula . "/aval_" . $cedula . ".jpg'/>
         </div>

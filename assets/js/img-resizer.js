@@ -58,7 +58,7 @@ var uploadAval = function(){
     };
 };
 
-//Funcion de carga de imagen aval
+//Funcion de carga de imagen cedula
 var uploadCedula = function(){
 	$('#img-cedula img').remove();
 	$('#cedula-icon').removeClass('hidden');
@@ -105,7 +105,7 @@ var uploadCedula = function(){
     };
 };
 
-//Funcion de carga de imagen aval
+//Funcion de carga de imagen cedula modificacion de datos
 var uploadCedulaMod = function(){
 	$('#img-cedula-mod-datos img').remove();
 	$('#cedula-icon-mod-datos').removeClass('hidden');

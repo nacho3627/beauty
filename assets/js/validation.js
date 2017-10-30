@@ -372,6 +372,14 @@ $(document).ready(function(){
 
 		$('#enviar-mod-datos').click(function(e) {
 			e.preventDefault();
+			
+			let domicilio = $('#domicilio-mod').val();
+			let departamento = $('#departamento-mod').val();
+			let ciudad = $('#ciudad-mod').val();
+			let razonSocial = $('#razon-social-mod').val();
+			let nombreAut1 = $('#nombre-aut-1-mod').val();
+			let nombreAut2 = $('#nombre-aut-2-mod').val();
+
 			let todoOk = true;
 			
 			let cedula = $('#cedula-mod').val();
@@ -448,11 +456,6 @@ $(document).ready(function(){
 			};
 
 
-			let razonSocial;
-			let nombreAut1 = $('#nombre-aut-1-mod').val();
-			let nombreAut2 = $('#nombre-aut-2-mod').val();
-		
-		
 			if(todoOk){
 				
 				// Envio al servidor
@@ -461,7 +464,7 @@ $(document).ready(function(){
     	    		dataType: "html",
     	    		contentType: "application/x-www-form-urlencoded",
     	    		url: "enviar-modificacion.php",
-    	    		// Enviar un parámetro post con el nombre base64 y con la imagen en el
+    	    		// Enviar un parámetro post con el nombre dataurl y con la imagen en el
     	    		data: {
     	        		cedula: cedula,
     	        		telefono: telefono,
@@ -472,7 +475,7 @@ $(document).ready(function(){
     	        		razonSocial: razonSocial,
     	        		rut: rut,
     	        		email: email,
-    	        		imagen_cedula: dataurl_cedula,
+    	        		imagen_cedula: dataurl_cedula_mod,
     	        		nombreAut1: nombreAut1,
     	        		nombreAut2: nombreAut2,
     	        		cedulaAut1: cedulaAut1,
@@ -573,7 +576,7 @@ $(document).ready(function(){
 
 		$('#cedula-aut-1-mod').keyup(function(){
 			let cedulaAut1 = $(this).val();
-			if (cedulaAut1.length !== 8 || isNaN(cedulaAut1)) {
+			if ((cedulaAut1 != '' && cedulaAut1.length !== 8) || isNaN(cedulaAut1)) {
 				$('.cedula-aut-1.invalid').removeClass('hidden');
 			} else {
 				$('.cedula-aut-1.invalid').addClass('hidden');
@@ -582,7 +585,7 @@ $(document).ready(function(){
 
 		$('#cedula-aut-2-mod').keyup(function(){
 			let cedulaAut2 = $(this).val();
-			if (cedulaAut2.length !== 8 || isNaN(cedulaAut2)) {
+			if ((cedulaAut2 != '' && cedulaAut2.length !== 8) || isNaN(cedulaAut2)) {
 				$('.cedula-aut-2.invalid').removeClass('hidden');
 			} else {
 				$('.cedula-aut-2.invalid').addClass('hidden');

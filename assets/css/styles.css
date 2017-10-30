@@ -676,3 +676,11 @@ div.modulos {
   height: 100px;
   width: auto;
 }
+
+/* Formularios Tramites Online */
+
+p#response {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 17px;
+}
